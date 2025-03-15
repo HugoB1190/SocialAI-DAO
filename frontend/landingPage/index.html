@@ -52,24 +52,10 @@
       height: 100vh;
       display: flex;
       align-items: center;
-      justify-content: center;
-      text-align: center;
       background: linear-gradient(135deg, #1a1a1a, #000);
     }
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: url('https://placehold.co/600x400') center center/cover no-repeat;
-      opacity: 0.2;
-      filter: blur(4px);
-      z-index: -1;
-    }
     .hero-content {
-      position: relative;
-      z-index: 1;
-      max-width: 800px;
-      padding: 20px;
+      text-align: left;
       animation: fadeIn 2s ease-out;
     }
     .hero h1 {
@@ -150,7 +136,7 @@
     }
     @keyframes scroll {
       from { transform: translateX(0); }
-      to { transform: translateX(-1760px); } /* 8 * (200+20) = 1760px */
+      to { transform: translateX(-1760px); }
     }
     /* Testimonials Section */
     #testimonials {
@@ -196,6 +182,55 @@
       font-size: 0.9rem;
       color: #777;
     }
+    
+    /* Mobile Breakpoints */
+    @media (max-width: 768px) {
+      .navbar-brand {
+        font-size: 1.5rem;
+      }
+      .nav-link {
+        margin-left: 0.5rem;
+        font-size: 0.9rem;
+      }
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      .hero p {
+        font-size: 1rem;
+      }
+      section {
+        padding: 60px 20px;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      /* Hero adjustments */
+      .hero {
+        height: auto;
+        padding: 40px 10px;
+      }
+      .hero-content {
+        text-align: center;
+      }
+      .hero h1 {
+        font-size: 2rem;
+      }
+      .hero p {
+        font-size: 0.9rem;
+      }
+      /* Force columns to stack */
+      .row.align-items-center {
+        flex-direction: column !important;
+      }
+      /* Team Section */
+      #team .team-member {
+        margin-bottom: 1.5rem;
+      }
+      /* Adjust logo slider */
+      .logo-slider {
+        width: auto;
+      }
+    }
   </style>
 </head>
 <body>
@@ -225,10 +260,20 @@
 
   <!-- Hero Section -->
   <header id="hero" class="hero">
-    <div class="hero-content">
-      <h1>Lorem ipsum dolor sit amet</h1>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum vestibulum.</p>
-      <a href="#signup" class="btn btn-primary btn-lg">Consectetur</a>
+    <div class="container" style="margin-top: 13%;">
+      <div class="row align-items-center">
+        <!-- Left: Hero Content -->
+        <div class="col-md-6 hero-content">
+          <h1>Lorem ipsum dolor sit amet</h1>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum vestibulum.</p>
+          <a href="#signup" class="btn btn-primary btn-lg">Consectetur</a>
+        </div>
+        <!-- Right: Hero Image / Widget -->
+        <div class="col-md-6">
+          <script src="https://price-static.crypto.com/latest/public/static/widget/index.js"></script>
+          <div id="crypto-widget-CoinList" data-theme="dark" data-design="modern" data-coin-ids="1" style="margin-top: 10px;"></div>
+        </div>
+      </div>
     </div>
   </header>
 
@@ -303,7 +348,7 @@
         <div class="slide"><img src="https://placehold.co/200x100?text=Logo6" alt="Logo 6"></div>
         <div class="slide"><img src="https://placehold.co/200x100?text=Logo7" alt="Logo 7"></div>
         <div class="slide"><img src="https://placehold.co/200x100?text=Logo8" alt="Logo 8"></div>
-        <!-- Duplicate -->
+        <!-- Duplicate for continuous scroll -->
         <div class="slide"><img src="https://placehold.co/200x100?text=Logo1" alt="Logo 1"></div>
         <div class="slide"><img src="https://placehold.co/200x100?text=Logo2" alt="Logo 2"></div>
         <div class="slide"><img src="https://placehold.co/200x100?text=Logo3" alt="Logo 3"></div>
