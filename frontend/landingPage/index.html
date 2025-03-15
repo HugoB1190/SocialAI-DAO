@@ -41,6 +41,7 @@
       color: #fff !important;
       margin-left: 1rem;
       font-size: 1rem;
+      cursor: pointer;
     }
     .nav-link:hover {
       color: #ff0080 !important;
@@ -88,11 +89,19 @@
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
+    /* Fade In Up Animation */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .fadeInUp {
+      animation: fadeInUp 1s ease-out forwards;
+    }
     /* Sections */
     section {
       padding: 80px 0;
     }
-    /* Cards/Features */
+    /* Cards / Features */
     .card {
       background: #1a1a1a;
       border: none;
@@ -115,15 +124,65 @@
     #about {
       background: #0d0d0d;
     }
-    /* Contact Form */
-    .form-control, .form-label {
-      background-color: #1a1a1a;
+    /* Continuous Partners Slider */
+    #partners {
+      background: #1a1a1a;
+      overflow: hidden;
+      position: relative;
+    }
+    .logo-slider {
+      display: flex;
+      width: calc(220px * 16); /* 8 logos duplicated */
+      animation: scroll 40s linear infinite;
+    }
+    .logo-slider .slide {
+      flex: 0 0 auto;
+      width: 200px;
+      margin-right: 20px;
+    }
+    .logo-slider .slide img {
+      width: 100%;
+      filter: grayscale(100%);
+      transition: filter 0.3s ease;
+    }
+    .logo-slider .slide img:hover {
+      filter: grayscale(0%);
+    }
+    @keyframes scroll {
+      from { transform: translateX(0); }
+      to { transform: translateX(-1760px); } /* 8 * (200+20) = 1760px */
+    }
+    /* Testimonials Section */
+    #testimonials {
+      background: #111;
+    }
+    #testimonials .carousel-item {
+      transition: opacity 0.8s ease-in-out;
+    }
+    /* Team Section */
+    #team .team-member {
+      text-align: center;
+      margin-bottom: 2rem;
+      transition: transform 0.3s ease;
+    }
+    #team .team-member:hover {
+      transform: translateY(-10px);
+    }
+    #team img {
+      border-radius: 50%;
+      margin-bottom: 1rem;
+    }
+    /* Contact Modal Styles */
+    .modal-content {
+      background: #1a1a1a;
       border: none;
+      border-radius: 1rem;
       color: #fff;
     }
-    .form-control::placeholder {
-      color: #777;
+    .modal-header, .modal-footer {
+      border: none;
     }
+    /* Buttons */
     .btn-primary, .btn-success {
       border-radius: 50px;
       padding: 10px 30px;
@@ -152,7 +211,13 @@
           <li class="nav-item"><a class="nav-link" href="#hero">Lorem</a></li>
           <li class="nav-item"><a class="nav-link" href="#features">Ipsum</a></li>
           <li class="nav-item"><a class="nav-link" href="#about">Dolor</a></li>
-          <li class="nav-item"><a class="nav-link" href="#contact">Sit</a></li>
+          <li class="nav-item"><a class="nav-link" href="#partners">Sit</a></li>
+          <li class="nav-item"><a class="nav-link" href="#testimonials">Amet</a></li>
+          <li class="nav-item"><a class="nav-link" href="#team">Consectetur</a></li>
+          <li class="nav-item">
+            <!-- Trigger Contact Modal -->
+            <a class="nav-link" data-bs-toggle="modal" data-bs-target="#contactModal">Contact</a>
+          </li>
         </ul>
       </div>
     </div>
@@ -169,7 +234,7 @@
 
   <!-- Features Section -->
   <section id="features">
-    <div class="container">
+    <div class="container fadeInUp">
       <div class="text-center mb-5">
         <h2 class="fw-bold">Lorem Ipsum</h2>
         <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
@@ -208,7 +273,7 @@
 
   <!-- About Section -->
   <section id="about">
-    <div class="container">
+    <div class="container fadeInUp">
       <div class="row align-items-center">
         <div class="col-md-6 text-white">
           <h2 class="fw-bold">Lorem Ipsum Dolor</h2>
@@ -221,30 +286,89 @@
     </div>
   </section>
 
-  <!-- Contact Section -->
-  <section id="contact">
-    <div class="container">
+  <!-- Partners Section (Continuous Logos Slider) -->
+  <section id="partners">
+    <div class="container fadeInUp">
       <div class="text-center mb-5">
-        <h2 class="fw-bold">Lorem Ipsum</h2>
+        <h2 class="fw-bold">Lorem Ipsum Partners</h2>
         <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
       </div>
-      <div class="row justify-content-center">
-        <div class="col-md-8">
-          <form>
-            <div class="mb-3">
-              <label for="name" class="form-label">Lorem</label>
-              <input type="text" class="form-control" id="name" placeholder="Lorem Ipsum">
-            </div>
-            <div class="mb-3">
-              <label for="email" class="form-label">Ipsum</label>
-              <input type="email" class="form-control" id="email" placeholder="lorem@ipsum.com">
-            </div>
-            <div class="mb-3">
-              <label for="message" class="form-label">Dolor</label>
-              <textarea class="form-control" id="message" rows="4" placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit."></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary btn-lg">Sit Amet</button>
-          </form>
+      <div class="logo-slider">
+        <!-- 8 logos duplicated for seamless continuous scroll -->
+        <div class="slide"><img src="https://placehold.co/200x100?text=Logo1" alt="Logo 1"></div>
+        <div class="slide"><img src="https://placehold.co/200x100?text=Logo2" alt="Logo 2"></div>
+        <div class="slide"><img src="https://placehold.co/200x100?text=Logo3" alt="Logo 3"></div>
+        <div class="slide"><img src="https://placehold.co/200x100?text=Logo4" alt="Logo 4"></div>
+        <div class="slide"><img src="https://placehold.co/200x100?text=Logo5" alt="Logo 5"></div>
+        <div class="slide"><img src="https://placehold.co/200x100?text=Logo6" alt="Logo 6"></div>
+        <div class="slide"><img src="https://placehold.co/200x100?text=Logo7" alt="Logo 7"></div>
+        <div class="slide"><img src="https://placehold.co/200x100?text=Logo8" alt="Logo 8"></div>
+        <!-- Duplicate -->
+        <div class="slide"><img src="https://placehold.co/200x100?text=Logo1" alt="Logo 1"></div>
+        <div class="slide"><img src="https://placehold.co/200x100?text=Logo2" alt="Logo 2"></div>
+        <div class="slide"><img src="https://placehold.co/200x100?text=Logo3" alt="Logo 3"></div>
+        <div class="slide"><img src="https://placehold.co/200x100?text=Logo4" alt="Logo 4"></div>
+        <div class="slide"><img src="https://placehold.co/200x100?text=Logo5" alt="Logo 5"></div>
+        <div class="slide"><img src="https://placehold.co/200x100?text=Logo6" alt="Logo 6"></div>
+        <div class="slide"><img src="https://placehold.co/200x100?text=Logo7" alt="Logo 7"></div>
+        <div class="slide"><img src="https://placehold.co/200x100?text=Logo8" alt="Logo 8"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section id="testimonials">
+    <div class="container fadeInUp">
+      <div class="text-center mb-5">
+        <h2 class="fw-bold">Lorem Ipsum Testimonials</h2>
+        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </div>
+      <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <blockquote class="blockquote text-center">
+              <p class="mb-4">"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante."</p>
+              <footer class="blockquote-footer text-white">— Someone Famous</footer>
+            </blockquote>
+          </div>
+          <div class="carousel-item">
+            <blockquote class="blockquote text-center">
+              <p class="mb-4">"Suspendisse potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit."</p>
+              <footer class="blockquote-footer text-white">— Another Person</footer>
+            </blockquote>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team Section -->
+  <section id="team">
+    <div class="container fadeInUp">
+      <div class="text-center mb-5">
+        <h2 class="fw-bold">Lorem Ipsum Team</h2>
+        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </div>
+      <div class="row">
+        <div class="col-md-3 col-sm-6 team-member">
+          <img src="https://placehold.co/200x200?text=Member+1" class="img-fluid" alt="Team Member">
+          <h5 class="mt-2">Lorem</h5>
+          <p class="text-muted">Ipsum</p>
+        </div>
+        <div class="col-md-3 col-sm-6 team-member">
+          <img src="https://placehold.co/200x200?text=Member+2" class="img-fluid" alt="Team Member">
+          <h5 class="mt-2">Dolor</h5>
+          <p class="text-muted">Sit Amet</p>
+        </div>
+        <div class="col-md-3 col-sm-6 team-member">
+          <img src="https://placehold.co/200x200?text=Member+3" class="img-fluid" alt="Team Member">
+          <h5 class="mt-2">Consectetur</h5>
+          <p class="text-muted">Adipiscing</p>
+        </div>
+        <div class="col-md-3 col-sm-6 team-member">
+          <img src="https://placehold.co/200x200?text=Member+4" class="img-fluid" alt="Team Member">
+          <h5 class="mt-2">Elit</h5>
+          <p class="text-muted">Sed Do</p>
         </div>
       </div>
     </div>
@@ -252,12 +376,41 @@
 
   <!-- Signup Section -->
   <section id="signup" class="bg-dark">
-    <div class="container text-center text-white">
+    <div class="container text-center text-white fadeInUp">
       <h2 class="fw-bold">Lorem Ipsum</h2>
       <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
       <a href="#" class="btn btn-success btn-lg">Lorem Ipsum</a>
     </div>
   </section>
+
+  <!-- Contact Modal -->
+  <div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="contactModalLabel">Lorem Ipsum Contact</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for="modalName" class="form-label">Lorem</label>
+              <input type="text" class="form-control" id="modalName" placeholder="Lorem Ipsum">
+            </div>
+            <div class="mb-3">
+              <label for="modalEmail" class="form-label">Ipsum</label>
+              <input type="email" class="form-control" id="modalEmail" placeholder="lorem@ipsum.com">
+            </div>
+            <div class="mb-3">
+              <label for="modalMessage" class="form-label">Dolor</label>
+              <textarea class="form-control" id="modalMessage" rows="4" placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit."></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Sit Amet</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Footer -->
   <footer>
