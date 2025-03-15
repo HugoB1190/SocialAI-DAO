@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lorem Ipsum</title>
+  <meta name="description" content="Lorem ipsum dolor sit amet, consectetur adipiscing elit." />
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    /* Global Styles */
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #0d0d0d;
+      color: #fff;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+    a {
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    a:hover {
+      color: #ff0080;
+    }
+    /* Navbar */
+    .navbar {
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(10px);
+    }
+    .navbar-brand {
+      font-weight: 700;
+      font-size: 1.8rem;
+      color: #fff;
+    }
+    .nav-link {
+      color: #fff !important;
+      margin-left: 1rem;
+      font-size: 1rem;
+    }
+    .nav-link:hover {
+      color: #ff0080 !important;
+    }
+    /* Hero Section */
+    .hero {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: linear-gradient(135deg, #1a1a1a, #000);
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: url('https://placehold.co/600x400') center center/cover no-repeat;
+      opacity: 0.2;
+      filter: blur(4px);
+      z-index: -1;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      padding: 20px;
+      animation: fadeIn 2s ease-out;
+    }
+    .hero h1 {
+      font-size: 3.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      background: linear-gradient(90deg, #ff0080, #ff8c00);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      color: #ccc;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    /* Sections */
+    section {
+      padding: 80px 0;
+    }
+    /* Cards/Features */
+    .card {
+      background: #1a1a1a;
+      border: none;
+      border-radius: 1rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 20px rgba(255, 0, 128, 0.3);
+    }
+    .card-body {
+      padding: 2rem;
+    }
+    .card i {
+      font-size: 3rem;
+      color: #ff0080;
+      margin-bottom: 1rem;
+    }
+    /* About Section */
+    #about {
+      background: #0d0d0d;
+    }
+    /* Contact Form */
+    .form-control, .form-label {
+      background-color: #1a1a1a;
+      border: none;
+      color: #fff;
+    }
+    .form-control::placeholder {
+      color: #777;
+    }
+    .btn-primary, .btn-success {
+      border-radius: 50px;
+      padding: 10px 30px;
+      font-weight: 600;
+    }
+    /* Footer */
+    footer {
+      background: #000;
+      padding: 40px 0;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">Lorem Ipsum</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#hero">Lorem</a></li>
+          <li class="nav-item"><a class="nav-link" href="#features">Ipsum</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">Dolor</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Sit</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header id="hero" class="hero">
+    <div class="hero-content">
+      <h1>Lorem ipsum dolor sit amet</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum vestibulum.</p>
+      <a href="#signup" class="btn btn-primary btn-lg">Consectetur</a>
+    </div>
+  </header>
+
+  <!-- Features Section -->
+  <section id="features">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="fw-bold">Lorem Ipsum</h2>
+        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card text-center p-4">
+            <div class="card-body">
+              <i class="bi bi-lightning-charge-fill"></i>
+              <h5 class="card-title mt-3">Lorem Ipsum</h5>
+              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card text-center p-4">
+            <div class="card-body">
+              <i class="bi bi-cpu-fill"></i>
+              <h5 class="card-title mt-3">Lorem Ipsum</h5>
+              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card text-center p-4">
+            <div class="card-body">
+              <i class="bi bi-globe"></i>
+              <h5 class="card-title mt-3">Lorem Ipsum</h5>
+              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-6 text-white">
+          <h2 class="fw-bold">Lorem Ipsum Dolor</h2>
+          <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce aliquet, urna id bibendum sodales, mauris massa interdum dolor, sit amet placerat urna est vel velit.</p>
+        </div>
+        <div class="col-md-6">
+          <img src="https://placehold.co/600x400" class="img-fluid rounded" alt="Lorem Ipsum">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="fw-bold">Lorem Ipsum</h2>
+        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <form>
+            <div class="mb-3">
+              <label for="name" class="form-label">Lorem</label>
+              <input type="text" class="form-control" id="name" placeholder="Lorem Ipsum">
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Ipsum</label>
+              <input type="email" class="form-control" id="email" placeholder="lorem@ipsum.com">
+            </div>
+            <div class="mb-3">
+              <label for="message" class="form-label">Dolor</label>
+              <textarea class="form-control" id="message" rows="4" placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit."></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg">Sit Amet</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Signup Section -->
+  <section id="signup" class="bg-dark">
+    <div class="container text-center text-white">
+      <h2 class="fw-bold">Lorem Ipsum</h2>
+      <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <a href="#" class="btn btn-success btn-lg">Lorem Ipsum</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Lorem Ipsum. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
