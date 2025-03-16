@@ -19,6 +19,7 @@
       color: #fff;
       overflow-x: hidden;
       scroll-behavior: smooth;
+      transition: background-color 0.3s, color 0.3s;
     }
     a {
       text-decoration: none;
@@ -27,10 +28,12 @@
     a:hover {
       color: #ff0080;
     }
+
     /* Navbar */
     .navbar {
       background: rgba(0, 0, 0, 0.8);
       backdrop-filter: blur(10px);
+      transition: background 0.3s;
     }
     .navbar-brand {
       font-weight: 700;
@@ -46,6 +49,57 @@
     .nav-link:hover {
       color: #ff0080 !important;
     }
+
+    /* Custom Toggle Switch */
+    .custom-toggle {
+      display: flex;
+      align-items: center;
+      margin-left: 1rem;
+    }
+    .toggle-switch {
+      position: relative;
+      display: inline-block;
+      width: 50px;
+      height: 28px;
+    }
+    .toggle-switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      transition: 0.4s;
+      border-radius: 28px;
+    }
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 22px;
+      width: 22px;
+      left: 3px;
+      bottom: 3px;
+      background-color: white;
+      transition: 0.4s;
+      border-radius: 50%;
+    }
+    input:checked + .slider {
+      background-color: #2196F3;
+    }
+    input:checked + .slider:before {
+      transform: translateX(22px);
+    }
+    .toggle-label {
+      font-size: 0.9rem;
+      margin-left: 8px;
+    }
+
     /* Hero Section */
     .hero {
       position: relative;
@@ -53,9 +107,20 @@
       display: flex;
       align-items: center;
       background: linear-gradient(135deg, #1a1a1a, #000);
+      overflow: hidden;
+      transition: background 0.3s;
+    }
+    /* Canvas Background */
+    #heroCanvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
     }
     .hero-content {
-      text-align: left;
+      z-index: 1;
       animation: fadeIn 2s ease-out;
     }
     .hero h1 {
@@ -75,18 +140,12 @@
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
-    /* Fade In Up Animation */
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .fadeInUp {
-      animation: fadeInUp 1s ease-out forwards;
-    }
-    /* Sections */
+
+    /* Section Styles */
     section {
       padding: 80px 0;
     }
+
     /* Cards / Features */
     .card {
       background: #1a1a1a;
@@ -106,11 +165,13 @@
       color: #ff0080;
       margin-bottom: 1rem;
     }
+
     /* About Section */
     #about {
       background: #0d0d0d;
     }
-    /* Continuous Partners Slider */
+
+    /* Partners Section */
     #partners {
       background: #1a1a1a;
       overflow: hidden;
@@ -118,7 +179,7 @@
     }
     .logo-slider {
       display: flex;
-      width: calc(220px * 16); /* 8 logos duplicated */
+      width: calc(220px * 16);
       animation: scroll 40s linear infinite;
     }
     .logo-slider .slide {
@@ -138,6 +199,7 @@
       from { transform: translateX(0); }
       to { transform: translateX(-1760px); }
     }
+
     /* Testimonials Section */
     #testimonials {
       background: #111;
@@ -145,6 +207,7 @@
     #testimonials .carousel-item {
       transition: opacity 0.8s ease-in-out;
     }
+
     /* Team Section */
     #team .team-member {
       text-align: center;
@@ -158,7 +221,30 @@
       border-radius: 50%;
       margin-bottom: 1rem;
     }
-    /* Contact Modal Styles */
+
+    /* FAQ Section */
+    #faq {
+      background: #0d0d0d;
+    }
+    #faq .accordion-button {
+      background-color: #1a1a1a;
+      color: #fff;
+    }
+    #faq .accordion-button:not(.collapsed) {
+      background-color: #ff0080;
+      color: #fff;
+    }
+    #faq .accordion-body {
+      background-color: #0d0d0d;
+      color: #ccc;
+    }
+
+    /* Signup Section */
+    #signup {
+      background: #000;
+    }
+
+    /* Contact Modal */
     .modal-content {
       background: #1a1a1a;
       border: none;
@@ -168,12 +254,23 @@
     .modal-header, .modal-footer {
       border: none;
     }
-    /* Buttons */
-    .btn-primary, .btn-success {
-      border-radius: 50px;
-      padding: 10px 30px;
-      font-weight: 600;
+
+    /* Back to Top Button */
+    #backToTop {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      display: none;
+      background-color: #ff0080;
+      color: #fff;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 50%;
+      font-size: 1.5rem;
+      cursor: pointer;
+      z-index: 1000;
     }
+
     /* Footer */
     footer {
       background: #000;
@@ -182,54 +279,57 @@
       font-size: 0.9rem;
       color: #777;
     }
-    
-    /* Mobile Breakpoints */
-    @media (max-width: 768px) {
-      .navbar-brand {
-        font-size: 1.5rem;
-      }
-      .nav-link {
-        margin-left: 0.5rem;
-        font-size: 0.9rem;
-      }
-      .hero h1 {
-        font-size: 2.5rem;
-      }
-      .hero p {
-        font-size: 1rem;
-      }
-      section {
-        padding: 60px 20px;
-      }
+
+    /* Light Mode Overrides */
+    body.light-mode {
+      background-color: #fff;
+      color: #000;
     }
-    
+    body.light-mode a {
+      color: #000;
+    }
+    body.light-mode .navbar {
+      background: rgba(255, 255, 255, 0.8);
+    }
+    body.light-mode .navbar-brand {
+      color: #000;
+    }
+    body.light-mode .nav-link {
+      color: #000 !important;
+    }
+    body.light-mode .hero {
+      background: linear-gradient(135deg, #f0f0f0, #fff);
+    }
+    body.light-mode .hero h1 {
+      background: linear-gradient(90deg, #000, #555);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    body.light-mode .card {
+      background: #f8f9fa;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    }
+    body.light-mode footer {
+      background: #f1f1f1;
+      color: #555;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      .navbar-brand { font-size: 1.5rem; }
+      .nav-link { margin-left: 0.5rem; font-size: 0.9rem; }
+      .hero h1 { font-size: 2.5rem; }
+      .hero p { font-size: 1rem; }
+      section { padding: 60px 20px; }
+    }
     @media (max-width: 576px) {
-      /* Hero adjustments */
-      .hero {
-        height: auto;
-        padding: 40px 10px;
-      }
-      .hero-content {
-        text-align: center;
-      }
-      .hero h1 {
-        font-size: 2rem;
-      }
-      .hero p {
-        font-size: 0.9rem;
-      }
-      /* Force columns to stack */
-      .row.align-items-center {
-        flex-direction: column !important;
-      }
-      /* Team Section */
-      #team .team-member {
-        margin-bottom: 1.5rem;
-      }
-      /* Adjust logo slider */
-      .logo-slider {
-        width: auto;
-      }
+      .hero { height: auto; padding: 40px 10px; }
+      .hero-content { text-align: center; }
+      .hero h1 { font-size: 2rem; }
+      .hero p { font-size: 0.9rem; }
+      .row.align-items-center { flex-direction: column !important; }
+      #team .team-member { margin-bottom: 1.5rem; }
+      .logo-slider { width: auto; }
     }
   </style>
 </head>
@@ -242,36 +342,46 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="#hero">Lorem</a></li>
-          <li class="nav-item"><a class="nav-link" href="#features">Ipsum</a></li>
-          <li class="nav-item"><a class="nav-link" href="#about">Dolor</a></li>
-          <li class="nav-item"><a class="nav-link" href="#partners">Sit</a></li>
-          <li class="nav-item"><a class="nav-link" href="#testimonials">Amet</a></li>
-          <li class="nav-item"><a class="nav-link" href="#team">Consectetur</a></li>
+        <ul class="navbar-nav ms-auto align-items-center">
+          <li class="nav-item"><a class="nav-link" href="#hero">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#partners">Partners</a></li>
+          <li class="nav-item"><a class="nav-link" href="#testimonials">Testimonials</a></li>
+          <li class="nav-item"><a class="nav-link" href="#team">Team</a></li>
+          <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
           <li class="nav-item">
-            <!-- Trigger Contact Modal -->
             <a class="nav-link" data-bs-toggle="modal" data-bs-target="#contactModal">Contact</a>
+          </li>
+          <!-- Dark/Light Toggle -->
+          <li class="nav-item">
+            <div class="custom-toggle">
+              <label class="toggle-switch">
+                <input type="checkbox" id="themeToggle">
+                <span class="slider"></span>
+              </label>
+              <span class="toggle-label" id="toggleLabel">Light Mode</span>
+            </div>
           </li>
         </ul>
       </div>
     </div>
   </nav>
 
-  <!-- Hero Section -->
+  <!-- Hero Section with Canvas Background -->
   <header id="hero" class="hero">
-    <div class="container" style="margin-top: 13%;">
+    <canvas id="heroCanvas"></canvas>
+    <div class="container">
       <div class="row align-items-center">
-        <!-- Left: Hero Content -->
         <div class="col-md-6 hero-content">
           <h1>Lorem ipsum dolor sit amet</h1>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum vestibulum.</p>
-          <a href="#signup" class="btn btn-primary btn-lg">Consectetur</a>
+          <a href="#signup" class="btn btn-primary btn-lg">Get Started</a>
         </div>
-        <!-- Right: Hero Image / Widget -->
-        <div class="col-md-6">
-          <script src="https://price-static.crypto.com/latest/public/static/widget/index.js"></script>
-          <div id="crypto-widget-CoinList" data-theme="dark" data-design="modern" data-coin-ids="1" style="margin-top: 10px;"></div>
+        <div class="col-lg-6">
+          <div class="ratio ratio-16x9">
+            <iframe class="rounded-4" src="https://www.youtube.com/embed/..." allowfullscreen></iframe>
+          </div>
         </div>
       </div>
     </div>
@@ -279,36 +389,34 @@
 
   <!-- Features Section -->
   <section id="features">
-    <div class="container fadeInUp">
-      <div class="text-center mb-5">
-        <h2 class="fw-bold">Lorem Ipsum</h2>
-        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-      </div>
+    <div class="container text-center">
+      <h2 class="fw-bold mb-3">Our Features</h2>
+      <p class="text-muted mb-5">Discover what makes us stand out.</p>
       <div class="row g-4">
         <div class="col-md-4">
-          <div class="card text-center p-4">
+          <div class="card p-4">
             <div class="card-body">
               <i class="bi bi-lightning-charge-fill"></i>
-              <h5 class="card-title mt-3">Lorem Ipsum</h5>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              <h5 class="card-title mt-3">Fast Performance</h5>
+              <p class="card-text">Experience blazing fast load times and seamless interactions.</p>
             </div>
           </div>
         </div>
         <div class="col-md-4">
-          <div class="card text-center p-4">
+          <div class="card p-4">
             <div class="card-body">
               <i class="bi bi-cpu-fill"></i>
-              <h5 class="card-title mt-3">Lorem Ipsum</h5>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              <h5 class="card-title mt-3">Smart Technology</h5>
+              <p class="card-text">Leveraging cutting-edge tech to deliver a modern experience.</p>
             </div>
           </div>
         </div>
         <div class="col-md-4">
-          <div class="card text-center p-4">
+          <div class="card p-4">
             <div class="card-body">
               <i class="bi bi-globe"></i>
-              <h5 class="card-title mt-3">Lorem Ipsum</h5>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              <h5 class="card-title mt-3">Global Reach</h5>
+              <p class="card-text">Connect with users all around the world effortlessly.</p>
             </div>
           </div>
         </div>
@@ -318,28 +426,26 @@
 
   <!-- About Section -->
   <section id="about">
-    <div class="container fadeInUp">
+    <div class="container">
       <div class="row align-items-center">
         <div class="col-md-6 text-white">
-          <h2 class="fw-bold">Lorem Ipsum Dolor</h2>
+          <h2 class="fw-bold">About Us</h2>
           <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce aliquet, urna id bibendum sodales, mauris massa interdum dolor, sit amet placerat urna est vel velit.</p>
         </div>
         <div class="col-md-6">
-          <img src="https://placehold.co/600x400" class="img-fluid rounded" alt="Lorem Ipsum">
+          <img src="https://placehold.co/600x400" class="img-fluid rounded" alt="About Us">
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Partners Section (Continuous Logos Slider) -->
+  <!-- Partners Section -->
   <section id="partners">
-    <div class="container fadeInUp">
-      <div class="text-center mb-5">
-        <h2 class="fw-bold">Lorem Ipsum Partners</h2>
-        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-      </div>
+    <div class="container text-center">
+      <h2 class="fw-bold mb-3">Our Partners</h2>
+      <p class="text-muted mb-5">Proudly working with industry leaders.</p>
       <div class="logo-slider">
-        <!-- 8 logos duplicated for seamless continuous scroll -->
+        <!-- Repeat partner logos for smooth scrolling -->
         <div class="slide"><img src="https://placehold.co/200x100?text=Logo1" alt="Logo 1"></div>
         <div class="slide"><img src="https://placehold.co/200x100?text=Logo2" alt="Logo 2"></div>
         <div class="slide"><img src="https://placehold.co/200x100?text=Logo3" alt="Logo 3"></div>
@@ -348,7 +454,7 @@
         <div class="slide"><img src="https://placehold.co/200x100?text=Logo6" alt="Logo 6"></div>
         <div class="slide"><img src="https://placehold.co/200x100?text=Logo7" alt="Logo 7"></div>
         <div class="slide"><img src="https://placehold.co/200x100?text=Logo8" alt="Logo 8"></div>
-        <!-- Duplicate for continuous scroll -->
+        <!-- Duplicate for seamless scrolling -->
         <div class="slide"><img src="https://placehold.co/200x100?text=Logo1" alt="Logo 1"></div>
         <div class="slide"><img src="https://placehold.co/200x100?text=Logo2" alt="Logo 2"></div>
         <div class="slide"><img src="https://placehold.co/200x100?text=Logo3" alt="Logo 3"></div>
@@ -363,11 +469,9 @@
 
   <!-- Testimonials Section -->
   <section id="testimonials">
-    <div class="container fadeInUp">
-      <div class="text-center mb-5">
-        <h2 class="fw-bold">Lorem Ipsum Testimonials</h2>
-        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-      </div>
+    <div class="container text-center">
+      <h2 class="fw-bold mb-3">Testimonials</h2>
+      <p class="text-muted mb-5">Hear what our customers have to say.</p>
       <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
         <div class="carousel-inner">
           <div class="carousel-item active">
@@ -389,42 +493,77 @@
 
   <!-- Team Section -->
   <section id="team">
-    <div class="container fadeInUp">
-      <div class="text-center mb-5">
-        <h2 class="fw-bold">Lorem Ipsum Team</h2>
-        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-      </div>
+    <div class="container text-center">
+      <h2 class="fw-bold mb-3">Meet the Team</h2>
+      <p class="text-muted mb-5">Our squad is always ready to innovate.</p>
       <div class="row">
         <div class="col-md-3 col-sm-6 team-member">
           <img src="https://placehold.co/200x200?text=Member+1" class="img-fluid" alt="Team Member">
           <h5 class="mt-2">Lorem</h5>
-          <p class="text-muted">Ipsum</p>
+          <p class="text-bg-dark">Creative Lead</p>
         </div>
         <div class="col-md-3 col-sm-6 team-member">
           <img src="https://placehold.co/200x200?text=Member+2" class="img-fluid" alt="Team Member">
           <h5 class="mt-2">Dolor</h5>
-          <p class="text-muted">Sit Amet</p>
+          <p class="text-muted">UX Designer</p>
         </div>
         <div class="col-md-3 col-sm-6 team-member">
           <img src="https://placehold.co/200x200?text=Member+3" class="img-fluid" alt="Team Member">
           <h5 class="mt-2">Consectetur</h5>
-          <p class="text-muted">Adipiscing</p>
+          <p class="text-muted">Front-End Dev</p>
         </div>
         <div class="col-md-3 col-sm-6 team-member">
           <img src="https://placehold.co/200x200?text=Member+4" class="img-fluid" alt="Team Member">
           <h5 class="mt-2">Elit</h5>
-          <p class="text-muted">Sed Do</p>
+          <p class="text-muted">Back-End Dev</p>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- FAQ Section -->
+  <section id="faq">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="fw-bold">Frequently Asked Questions</h2>
+        <p class="text-muted">Got questions? We’ve got answers.</p>
+      </div>
+      <div class="accordion" id="faqAccordion">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="faqHeadingOne">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapseOne" aria-expanded="true" aria-controls="faqCollapseOne">
+              What is Lorem Ipsum?
+            </button>
+          </h2>
+          <div id="faqCollapseOne" class="accordion-collapse collapse show" aria-labelledby="faqHeadingOne" data-bs-parent="#faqAccordion">
+            <div class="accordion-body">
+              Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="faqHeadingTwo">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapseTwo" aria-expanded="false" aria-controls="faqCollapseTwo">
+              Where does it come from?
+            </button>
+          </h2>
+          <div id="faqCollapseTwo" class="accordion-collapse collapse" aria-labelledby="faqHeadingTwo" data-bs-parent="#faqAccordion">
+            <div class="accordion-body">
+              It has roots in a piece of classical Latin literature from 45 BC.
+            </div>
+          </div>
+        </div>
+        <!-- More FAQ items can be added here -->
+      </div>
+    </div>
+  </section>
+
   <!-- Signup Section -->
-  <section id="signup" class="bg-dark">
-    <div class="container text-center text-white fadeInUp">
-      <h2 class="fw-bold">Lorem Ipsum</h2>
-      <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-      <a href="#" class="btn btn-success btn-lg">Lorem Ipsum</a>
+  <section id="signup">
+    <div class="container text-center text-white">
+      <h2 class="fw-bold">Join Us Today</h2>
+      <p class="text-muted">Become part of our growing community.</p>
+      <a href="#" class="btn btn-success btn-lg">Sign Up Now</a>
     </div>
   </section>
 
@@ -433,29 +572,32 @@
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="contactModalLabel">Lorem Ipsum Contact</h5>
+          <h5 class="modal-title" id="contactModalLabel">Contact Us</h5>
           <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
           <form>
             <div class="mb-3">
-              <label for="modalName" class="form-label">Lorem</label>
-              <input type="text" class="form-control" id="modalName" placeholder="Lorem Ipsum">
+              <label for="modalName" class="form-label">Name</label>
+              <input type="text" class="form-control" id="modalName" placeholder="Your Name">
             </div>
             <div class="mb-3">
-              <label for="modalEmail" class="form-label">Ipsum</label>
-              <input type="email" class="form-control" id="modalEmail" placeholder="lorem@ipsum.com">
+              <label for="modalEmail" class="form-label">Email</label>
+              <input type="email" class="form-control" id="modalEmail" placeholder="you@example.com">
             </div>
             <div class="mb-3">
-              <label for="modalMessage" class="form-label">Dolor</label>
-              <textarea class="form-control" id="modalMessage" rows="4" placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit."></textarea>
+              <label for="modalMessage" class="form-label">Message</label>
+              <textarea class="form-control" id="modalMessage" rows="4" placeholder="Your Message"></textarea>
             </div>
-            <button type="submit" class="btn btn-primary w-100">Sit Amet</button>
+            <button type="submit" class="btn btn-primary w-100">Send Message</button>
           </form>
         </div>
       </div>
     </div>
   </div>
+
+  <!-- Back to Top Button -->
+  <button id="backToTop" title="Back to Top"><i class="bi bi-arrow-up"></i></button>
 
   <!-- Footer -->
   <footer>
@@ -466,5 +608,125 @@
 
   <!-- Bootstrap JS Bundle -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <!-- Theme Toggle Script -->
+  <script>
+    const themeToggle = document.getElementById('themeToggle');
+    const toggleLabel = document.getElementById('toggleLabel');
+    document.addEventListener('DOMContentLoaded', () => {
+      const theme = localStorage.getItem('theme');
+      if (theme === 'light') {
+        document.body.classList.add('light-mode');
+        themeToggle.checked = true;
+        toggleLabel.textContent = 'Dark Mode';
+      } else {
+        themeToggle.checked = false;
+        toggleLabel.textContent = 'Light Mode';
+      }
+    });
+    themeToggle.addEventListener('change', () => {
+      if (themeToggle.checked) {
+        document.body.classList.add('light-mode');
+        toggleLabel.textContent = 'Dark Mode';
+        localStorage.setItem('theme', 'light');
+      } else {
+        document.body.classList.remove('light-mode');
+        toggleLabel.textContent = 'Light Mode';
+        localStorage.setItem('theme', 'dark');
+      }
+    });
+  </script>
+  
+  <!-- Canvas Animation with Mouse Interaction -->
+  <script>
+    function initCanvas() {
+      const canvas = document.getElementById('heroCanvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      canvas.width = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
+      
+      const particles = [];
+      const particleCount = 50;
+      const mouse = { x: null, y: null, radius: 80 };
+
+      canvas.addEventListener('mousemove', (e) => {
+        const rect = canvas.getBoundingClientRect();
+        mouse.x = e.clientX - rect.left;
+        mouse.y = e.clientY - rect.top;
+      });
+      canvas.addEventListener('mouseleave', () => {
+        mouse.x = null;
+        mouse.y = null;
+      });
+
+      function createParticles() {
+        particles.length = 0;
+        for (let i = 0; i < particleCount; i++) {
+          particles.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            r: Math.random() * 3 + 1,
+            dx: (Math.random() - 0.5) * 2,
+            dy: (Math.random() - 0.5) * 2
+          });
+        }
+      }
+
+      function updateParticles() {
+        particles.forEach(p => {
+          p.x += p.dx;
+          p.y += p.dy;
+          if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
+          if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
+          if (mouse.x !== null && mouse.y !== null) {
+            let dx = mouse.x - p.x;
+            let dy = mouse.y - p.y;
+            let distance = Math.sqrt(dx * dx + dy * dy);
+            if (distance < mouse.radius && distance > 0) {
+              p.dx += (dx / distance) * 0.05;
+              p.dy += (dy / distance) * 0.05;
+            }
+          }
+        });
+      }
+
+      function drawParticles() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        particles.forEach(p => {
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fillStyle = 'rgba(255, 0, 128, 0.5)';
+          ctx.fill();
+        });
+      }
+
+      function animate() {
+        updateParticles();
+        drawParticles();
+        requestAnimationFrame(animate);
+      }
+
+      createParticles();
+      animate();
+    }
+    window.addEventListener('load', initCanvas);
+    window.addEventListener('resize', initCanvas);
+  </script>
+  
+  <!-- Back to Top Button Script -->
+  <script>
+    const backToTop = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      if (document.documentElement.scrollTop > 100) {
+        backToTop.style.display = 'block';
+      } else {
+        backToTop.style.display = 'none';
+      }
+    });
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
 </body>
 </html>
