@@ -1,732 +1,542 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lorem Ipsum</title>
-  <meta name="description" content="Lorem ipsum dolor sit amet, consectetur adipiscing elit." />
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <!-- Bootstrap Icons -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    /* Global Styles */
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: #0d0d0d;
-      color: #fff;
-      overflow-x: hidden;
-      scroll-behavior: smooth;
-      transition: background-color 0.3s, color 0.3s;
-    }
-    a {
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
-    a:hover {
-      color: #ff0080;
-    }
-
-    /* Navbar */
-    .navbar {
-      background: rgba(0, 0, 0, 0.8);
-      backdrop-filter: blur(10px);
-      transition: background 0.3s;
-    }
-    .navbar-brand {
-      font-weight: 700;
-      font-size: 1.8rem;
-      color: #fff;
-    }
-    .nav-link {
-      color: #fff !important;
-      margin-left: 1rem;
-      font-size: 1rem;
-      cursor: pointer;
-    }
-    .nav-link:hover {
-      color: #ff0080 !important;
-    }
-
-    /* Custom Toggle Switch */
-    .custom-toggle {
-      display: flex;
-      align-items: center;
-      margin-left: 1rem;
-    }
-    .toggle-switch {
-      position: relative;
-      display: inline-block;
-      width: 50px;
-      height: 28px;
-    }
-    .toggle-switch input {
-      opacity: 0;
-      width: 0;
-      height: 0;
-    }
-    .slider {
-      position: absolute;
-      cursor: pointer;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-color: #ccc;
-      transition: 0.4s;
-      border-radius: 28px;
-    }
-    .slider:before {
-      position: absolute;
-      content: "";
-      height: 22px;
-      width: 22px;
-      left: 3px;
-      bottom: 3px;
-      background-color: white;
-      transition: 0.4s;
-      border-radius: 50%;
-    }
-    input:checked + .slider {
-      background-color: #2196F3;
-    }
-    input:checked + .slider:before {
-      transform: translateX(22px);
-    }
-    .toggle-label {
-      font-size: 0.9rem;
-      margin-left: 8px;
-    }
-
-    /* Hero Section */
-    .hero {
-      position: relative;
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      background: linear-gradient(135deg, #1a1a1a, #000);
-      overflow: hidden;
-      transition: background 0.3s;
-    }
-    /* Canvas Background */
-    #heroCanvas {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-    }
-    .hero-content {
-      z-index: 1;
-      animation: fadeIn 2s ease-out;
-    }
-    .hero h1 {
-      font-size: 3.5rem;
-      font-weight: 700;
-      margin-bottom: 1rem;
-      background: linear-gradient(90deg, #ff0080, #ff8c00);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    .hero p {
-      font-size: 1.2rem;
-      margin-bottom: 2rem;
-      color: #ccc;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* Section Styles */
-    section {
-      padding: 80px 0;
-    }
-
-    /* Cards / Features */
-    .card {
-      background: #1a1a1a;
-      border: none;
-      border-radius: 1rem;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 8px 20px rgba(255, 0, 128, 0.3);
-    }
-    .card-body {
-      padding: 2rem;
-    }
-    .card i {
-      font-size: 3rem;
-      color: #ff0080;
-      margin-bottom: 1rem;
-    }
-
-    /* About Section */
-    #about {
-      background: #0d0d0d;
-    }
-
-    /* Partners Section */
-    #partners {
-      background: #1a1a1a;
-      overflow: hidden;
-      position: relative;
-    }
-    .logo-slider {
-      display: flex;
-      width: calc(220px * 16);
-      animation: scroll 40s linear infinite;
-    }
-    .logo-slider .slide {
-      flex: 0 0 auto;
-      width: 200px;
-      margin-right: 20px;
-    }
-    .logo-slider .slide img {
-      width: 100%;
-      filter: grayscale(100%);
-      transition: filter 0.3s ease;
-    }
-    .logo-slider .slide img:hover {
-      filter: grayscale(0%);
-    }
-    @keyframes scroll {
-      from { transform: translateX(0); }
-      to { transform: translateX(-1760px); }
-    }
-
-    /* Testimonials Section */
-    #testimonials {
-      background: #111;
-    }
-    #testimonials .carousel-item {
-      transition: opacity 0.8s ease-in-out;
-    }
-
-    /* Team Section */
-    #team .team-member {
-      text-align: center;
-      margin-bottom: 2rem;
-      transition: transform 0.3s ease;
-    }
-    #team .team-member:hover {
-      transform: translateY(-10px);
-    }
-    #team img {
-      border-radius: 50%;
-      margin-bottom: 1rem;
-    }
-
-    /* FAQ Section */
-    #faq {
-      background: #0d0d0d;
-    }
-    #faq .accordion-button {
-      background-color: #1a1a1a;
-      color: #fff;
-    }
-    #faq .accordion-button:not(.collapsed) {
-      background-color: #ff0080;
-      color: #fff;
-    }
-    #faq .accordion-body {
-      background-color: #0d0d0d;
-      color: #ccc;
-    }
-
-    /* Signup Section */
-    #signup {
-      background: #000;
-    }
-
-    /* Contact Modal */
-    .modal-content {
-      background: #1a1a1a;
-      border: none;
-      border-radius: 1rem;
-      color: #fff;
-    }
-    .modal-header, .modal-footer {
-      border: none;
-    }
-
-    /* Back to Top Button */
-    #backToTop {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      display: none;
-      background-color: #ff0080;
-      color: #fff;
-      border: none;
-      padding: 10px 15px;
-      border-radius: 50%;
-      font-size: 1.5rem;
-      cursor: pointer;
-      z-index: 1000;
-    }
-
-    /* Footer */
-    footer {
-      background: #000;
-      padding: 40px 0;
-      text-align: center;
-      font-size: 0.9rem;
-      color: #777;
-    }
-
-    /* Light Mode Overrides */
-    body.light-mode {
-      background-color: #fff;
-      color: #000;
-    }
-    body.light-mode a {
-      color: #000;
-    }
-    body.light-mode .navbar {
-      background: rgba(255, 255, 255, 0.8);
-    }
-    body.light-mode .navbar-brand {
-      color: #000;
-    }
-    body.light-mode .nav-link {
-      color: #000 !important;
-    }
-    body.light-mode .hero {
-      background: linear-gradient(135deg, #f0f0f0, #fff);
-    }
-    body.light-mode .hero h1 {
-      background: linear-gradient(90deg, #000, #555);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    body.light-mode .card {
-      background: #f8f9fa;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-    }
-    body.light-mode footer {
-      background: #f1f1f1;
-      color: #555;
-    }
-
-    /* Responsive Styles */
-    @media (max-width: 768px) {
-      .navbar-brand { font-size: 1.5rem; }
-      .nav-link { margin-left: 0.5rem; font-size: 0.9rem; }
-      .hero h1 { font-size: 2.5rem; }
-      .hero p { font-size: 1rem; }
-      section { padding: 60px 20px; }
-    }
-    @media (max-width: 576px) {
-      .hero { height: auto; padding: 40px 10px; }
-      .hero-content { text-align: center; }
-      .hero h1 { font-size: 2rem; }
-      .hero p { font-size: 0.9rem; }
-      .row.align-items-center { flex-direction: column !important; }
-      #team .team-member { margin-bottom: 1.5rem; }
-      .logo-slider { width: auto; }
-    }
-  </style>
-</head>
-<body>
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg fixed-top">
-    <div class="container">
-      <a class="navbar-brand" href="#">Lorem Ipsum</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto align-items-center">
-          <li class="nav-item"><a class="nav-link" href="#hero">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
-          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-          <li class="nav-item"><a class="nav-link" href="#partners">Partners</a></li>
-          <li class="nav-item"><a class="nav-link" href="#testimonials">Testimonials</a></li>
-          <li class="nav-item"><a class="nav-link" href="#team">Team</a></li>
-          <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
-          <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="modal" data-bs-target="#contactModal">Contact</a>
-          </li>
-          <!-- Dark/Light Toggle -->
-          <li class="nav-item">
-            <div class="custom-toggle">
-              <label class="toggle-switch">
-                <input type="checkbox" id="themeToggle">
-                <span class="slider"></span>
-              </label>
-              <span class="toggle-label" id="toggleLabel">Light Mode</span>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-
-  <!-- Hero Section with Canvas Background -->
-  <header id="hero" class="hero">
-    <canvas id="heroCanvas"></canvas>
-    <div class="container">
-      <div class="row align-items-center">
-        <div class="col-md-6 hero-content">
-          <h1>Lorem ipsum dolor sit amet</h1>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum vestibulum.</p>
-          <a href="#signup" class="btn btn-primary btn-lg">Get Started</a>
-        </div>
-        <div class="col-lg-6">
-          <div class="ratio ratio-16x9">
-            <iframe class="rounded-4" src="https://www.youtube.com/embed/..." allowfullscreen></iframe>
-          </div>
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <!-- Features Section -->
-  <section id="features">
-    <div class="container text-center">
-      <h2 class="fw-bold mb-3">Our Features</h2>
-      <p class="text-muted mb-5">Discover what makes us stand out.</p>
-      <div class="row g-4">
-        <div class="col-md-4">
-          <div class="card p-4">
-            <div class="card-body">
-              <i class="bi bi-lightning-charge-fill"></i>
-              <h5 class="card-title mt-3">Fast Performance</h5>
-              <p class="card-text">Experience blazing fast load times and seamless interactions.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card p-4">
-            <div class="card-body">
-              <i class="bi bi-cpu-fill"></i>
-              <h5 class="card-title mt-3">Smart Technology</h5>
-              <p class="card-text">Leveraging cutting-edge tech to deliver a modern experience.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card p-4">
-            <div class="card-body">
-              <i class="bi bi-globe"></i>
-              <h5 class="card-title mt-3">Global Reach</h5>
-              <p class="card-text">Connect with users all around the world effortlessly.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- About Section -->
-  <section id="about">
-    <div class="container">
-      <div class="row align-items-center">
-        <div class="col-md-6 text-white">
-          <h2 class="fw-bold">About Us</h2>
-          <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce aliquet, urna id bibendum sodales, mauris massa interdum dolor, sit amet placerat urna est vel velit.</p>
-        </div>
-        <div class="col-md-6">
-          <img src="https://placehold.co/600x400" class="img-fluid rounded" alt="About Us">
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Partners Section -->
-  <section id="partners">
-    <div class="container text-center">
-      <h2 class="fw-bold mb-3">Our Partners</h2>
-      <p class="text-muted mb-5">Proudly working with industry leaders.</p>
-      <div class="logo-slider">
-        <!-- Repeat partner logos for smooth scrolling -->
-        <div class="slide"><img src="https://placehold.co/200x100?text=Logo1" alt="Logo 1"></div>
-        <div class="slide"><img src="https://placehold.co/200x100?text=Logo2" alt="Logo 2"></div>
-        <div class="slide"><img src="https://placehold.co/200x100?text=Logo3" alt="Logo 3"></div>
-        <div class="slide"><img src="https://placehold.co/200x100?text=Logo4" alt="Logo 4"></div>
-        <div class="slide"><img src="https://placehold.co/200x100?text=Logo5" alt="Logo 5"></div>
-        <div class="slide"><img src="https://placehold.co/200x100?text=Logo6" alt="Logo 6"></div>
-        <div class="slide"><img src="https://placehold.co/200x100?text=Logo7" alt="Logo 7"></div>
-        <div class="slide"><img src="https://placehold.co/200x100?text=Logo8" alt="Logo 8"></div>
-        <!-- Duplicate for seamless scrolling -->
-        <div class="slide"><img src="https://placehold.co/200x100?text=Logo1" alt="Logo 1"></div>
-        <div class="slide"><img src="https://placehold.co/200x100?text=Logo2" alt="Logo 2"></div>
-        <div class="slide"><img src="https://placehold.co/200x100?text=Logo3" alt="Logo 3"></div>
-        <div class="slide"><img src="https://placehold.co/200x100?text=Logo4" alt="Logo 4"></div>
-        <div class="slide"><img src="https://placehold.co/200x100?text=Logo5" alt="Logo 5"></div>
-        <div class="slide"><img src="https://placehold.co/200x100?text=Logo6" alt="Logo 6"></div>
-        <div class="slide"><img src="https://placehold.co/200x100?text=Logo7" alt="Logo 7"></div>
-        <div class="slide"><img src="https://placehold.co/200x100?text=Logo8" alt="Logo 8"></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Testimonials Section -->
-  <section id="testimonials">
-    <div class="container text-center">
-      <h2 class="fw-bold mb-3">Testimonials</h2>
-      <p class="text-muted mb-5">Hear what our customers have to say.</p>
-      <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <blockquote class="blockquote text-center">
-              <p class="mb-4">"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante."</p>
-              <footer class="blockquote-footer text-white">— Someone Famous</footer>
-            </blockquote>
-          </div>
-          <div class="carousel-item">
-            <blockquote class="blockquote text-center">
-              <p class="mb-4">"Suspendisse potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit."</p>
-              <footer class="blockquote-footer text-white">— Another Person</footer>
-            </blockquote>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Team Section -->
-  <section id="team">
-    <div class="container text-center">
-      <h2 class="fw-bold mb-3">Meet the Team</h2>
-      <p class="text-muted mb-5">Our squad is always ready to innovate.</p>
-      <div class="row">
-        <div class="col-md-3 col-sm-6 team-member">
-          <img src="https://placehold.co/200x200?text=Member+1" class="img-fluid" alt="Team Member">
-          <h5 class="mt-2">Lorem</h5>
-          <p class="text-bg-dark">Creative Lead</p>
-        </div>
-        <div class="col-md-3 col-sm-6 team-member">
-          <img src="https://placehold.co/200x200?text=Member+2" class="img-fluid" alt="Team Member">
-          <h5 class="mt-2">Dolor</h5>
-          <p class="text-muted">UX Designer</p>
-        </div>
-        <div class="col-md-3 col-sm-6 team-member">
-          <img src="https://placehold.co/200x200?text=Member+3" class="img-fluid" alt="Team Member">
-          <h5 class="mt-2">Consectetur</h5>
-          <p class="text-muted">Front-End Dev</p>
-        </div>
-        <div class="col-md-3 col-sm-6 team-member">
-          <img src="https://placehold.co/200x200?text=Member+4" class="img-fluid" alt="Team Member">
-          <h5 class="mt-2">Elit</h5>
-          <p class="text-muted">Back-End Dev</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FAQ Section -->
-  <section id="faq">
-    <div class="container">
-      <div class="text-center mb-5">
-        <h2 class="fw-bold">Frequently Asked Questions</h2>
-        <p class="text-muted">Got questions? We’ve got answers.</p>
-      </div>
-      <div class="accordion" id="faqAccordion">
-        <div class="accordion-item">
-          <h2 class="accordion-header" id="faqHeadingOne">
-            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapseOne" aria-expanded="true" aria-controls="faqCollapseOne">
-              What is Lorem Ipsum?
-            </button>
-          </h2>
-          <div id="faqCollapseOne" class="accordion-collapse collapse show" aria-labelledby="faqHeadingOne" data-bs-parent="#faqAccordion">
-            <div class="accordion-body">
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-            </div>
-          </div>
-        </div>
-        <div class="accordion-item">
-          <h2 class="accordion-header" id="faqHeadingTwo">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapseTwo" aria-expanded="false" aria-controls="faqCollapseTwo">
-              Where does it come from?
-            </button>
-          </h2>
-          <div id="faqCollapseTwo" class="accordion-collapse collapse" aria-labelledby="faqHeadingTwo" data-bs-parent="#faqAccordion">
-            <div class="accordion-body">
-              It has roots in a piece of classical Latin literature from 45 BC.
-            </div>
-          </div>
-        </div>
-        <!-- More FAQ items can be added here -->
-      </div>
-    </div>
-  </section>
-
-  <!-- Signup Section -->
-  <section id="signup">
-    <div class="container text-center text-white">
-      <h2 class="fw-bold">Join Us Today</h2>
-      <p class="text-muted">Become part of our growing community.</p>
-      <a href="#" class="btn btn-success btn-lg">Sign Up Now</a>
-    </div>
-  </section>
-
-  <!-- Contact Modal -->
-  <div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="contactModalLabel">Contact Us</h5>
-          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <form>
-            <div class="mb-3">
-              <label for="modalName" class="form-label">Name</label>
-              <input type="text" class="form-control" id="modalName" placeholder="Your Name">
-            </div>
-            <div class="mb-3">
-              <label for="modalEmail" class="form-label">Email</label>
-              <input type="email" class="form-control" id="modalEmail" placeholder="you@example.com">
-            </div>
-            <div class="mb-3">
-              <label for="modalMessage" class="form-label">Message</label>
-              <textarea class="form-control" id="modalMessage" rows="4" placeholder="Your Message"></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary w-100">Send Message</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Back to Top Button -->
-  <button id="backToTop" title="Back to Top"><i class="bi bi-arrow-up"></i></button>
-
-  <!-- Footer -->
-  <footer>
-    <div class="container">
-      <p>&copy; 2025 Lorem Ipsum. All rights reserved.</p>
-    </div>
-  </footer>
-
-  <!-- Bootstrap JS Bundle -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  
-  <!-- Theme Toggle Script -->
-  <script>
-    const themeToggle = document.getElementById('themeToggle');
-    const toggleLabel = document.getElementById('toggleLabel');
-    document.addEventListener('DOMContentLoaded', () => {
-      const theme = localStorage.getItem('theme');
-      if (theme === 'light') {
-        document.body.classList.add('light-mode');
-        themeToggle.checked = true;
-        toggleLabel.textContent = 'Dark Mode';
-      } else {
-        themeToggle.checked = false;
-        toggleLabel.textContent = 'Light Mode';
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modern Hero Section with Animations</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+      :root {
+        --primary-color: #6366f1;
+        --text-color: #fff;
+        --secondary-text: #bbb;
+        --border-color: #bbb;
+        --bg-color: #111;
+        --shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
       }
-    });
-    themeToggle.addEventListener('change', () => {
-      if (themeToggle.checked) {
-        document.body.classList.add('light-mode');
-        toggleLabel.textContent = 'Dark Mode';
-        localStorage.setItem('theme', 'light');
-      } else {
-        document.body.classList.remove('light-mode');
-        toggleLabel.textContent = 'Light Mode';
-        localStorage.setItem('theme', 'dark');
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
       }
-    });
-  </script>
-  
-  <!-- Canvas Animation with Mouse Interaction -->
-  <script>
-    function initCanvas() {
-      const canvas = document.getElementById('heroCanvas');
-      if (!canvas) return;
-      const ctx = canvas.getContext('2d');
-      canvas.width = canvas.offsetWidth;
-      canvas.height = canvas.offsetHeight;
-      
-      const particles = [];
-      const particleCount = 50;
-      const mouse = { x: null, y: null, radius: 80 };
 
-      canvas.addEventListener('mousemove', (e) => {
-        const rect = canvas.getBoundingClientRect();
-        mouse.x = e.clientX - rect.left;
-        mouse.y = e.clientY - rect.top;
-      });
-      canvas.addEventListener('mouseleave', () => {
-        mouse.x = null;
-        mouse.y = null;
-      });
+      body {
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        font-family: Arial, sans-serif;
+        overflow-x: hidden;
+      }
 
-      function createParticles() {
-        particles.length = 0;
-        for (let i = 0; i < particleCount; i++) {
-          particles.push({
-            x: Math.random() * canvas.width,
-            y: Math.random() * canvas.height,
-            r: Math.random() * 3 + 1,
-            dx: (Math.random() - 0.5) * 2,
-            dy: (Math.random() - 0.5) * 2
-          });
+      .section {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 5% 10%;
+        min-height: 100vh;
+        max-width: 1600px;
+        margin: 0 auto;
+      }
+
+      .text-content {
+        max-width: 40%;
+        z-index: 2;
+      }
+
+      .text-content h1 {
+        font-size: clamp(2.5rem, 5vw, 3.5rem);
+        font-weight: bold;
+        line-height: 1.2;
+      }
+
+      .text-content p {
+        margin: 20px 0;
+        font-size: 1.3rem;
+        color: var(--secondary-text);
+        line-height: 1.6;
+      }
+
+      .buttons {
+        display: flex;
+        gap: 15px;
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        padding: 14px 28px;
+        border-radius: 8px;
+        font-size: 1.1rem;
+        text-decoration: none;
+        font-weight: bold;
+        transition: opacity 0.3s ease;
+      }
+
+      .btn-primary {
+        background-color: var(--primary-color);
+        color: var(--text-color);
+      }
+
+      .btn-secondary {
+        background-color: transparent;
+        border: 2px solid var(--border-color);
+        color: var(--border-color);
+      }
+
+      .btn:hover {
+        opacity: 0.9;
+      }
+
+      .image-gallery {
+        position: relative;
+        width: 50%;
+        min-height: 600px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .image-gallery img {
+        position: absolute;
+        width: 250px;
+        height: 350px;
+        object-fit: cover;
+        border-radius: 15px;
+        box-shadow: var(--shadow);
+        transition: transform 0.3s ease;
+      }
+
+      .image-gallery img:hover {
+        transform: scale(1.05);
+        z-index: 5;
+      }
+
+      .image-gallery img:nth-child(1) {
+        top: 5%;
+        left: -10%;
+        z-index: 3;
+      }
+
+      .image-gallery img:nth-child(2) {
+        top: 20%;
+        right: 5%;
+        z-index: 2;
+      }
+
+      .image-gallery img:nth-child(3) {
+        bottom: 20%;
+        left: -15%;
+        z-index: 1;
+      }
+
+      .image-gallery img:nth-child(4) {
+        bottom: 5%;
+        right: -5%;
+        z-index: 4;
+      }
+
+      @media (max-width: 1200px) {
+        .image-gallery img {
+          width: 220px;
+          height: 300px;
         }
       }
 
-      function updateParticles() {
-        particles.forEach(p => {
-          p.x += p.dx;
-          p.y += p.dy;
-          if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
-          if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
-          if (mouse.x !== null && mouse.y !== null) {
-            let dx = mouse.x - p.x;
-            let dy = mouse.y - p.y;
-            let distance = Math.sqrt(dx * dx + dy * dy);
-            if (distance < mouse.radius && distance > 0) {
-              p.dx += (dx / distance) * 0.05;
-              p.dy += (dy / distance) * 0.05;
-            }
-          }
-        });
+      @media (max-width: 1024px) {
+        .section {
+          flex-direction: column;
+          text-align: center;
+          padding: 10% 5%;
+        }
+
+        .text-content {
+          max-width: 100%;
+          margin-bottom: 40px;
+        }
+
+        .buttons {
+          justify-content: center;
+        }
+
+        .image-gallery {
+          width: 100%;
+          min-height: auto;
+          height: 500px;
+          margin-top: 40px;
+        }
+
+        .image-gallery img {
+          width: 200px;
+          height: 280px;
+        }
       }
 
-      function drawParticles() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        particles.forEach(p => {
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-          ctx.fillStyle = 'rgba(255, 0, 128, 0.5)';
-          ctx.fill();
-        });
+      @media (max-width: 768px) {
+        .image-gallery {
+          height: auto;
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 20px;
+          padding: 20px;
+        }
+
+        .image-gallery img {
+          position: relative;
+          width: 100%;
+          height: 250px;
+          left: auto !important;
+          right: auto !important;
+          top: auto !important;
+          bottom: auto !important;
+        }
+
+        .btn {
+          width: 100%;
+          text-align: center;
+        }
       }
 
-      function animate() {
-        updateParticles();
-        drawParticles();
-        requestAnimationFrame(animate);
+      @media (hover: none) {
+        .image-gallery img:hover {
+          transform: none;
+        }
       }
 
-      createParticles();
-      animate();
-    }
-    window.addEventListener('load', initCanvas);
-    window.addEventListener('resize', initCanvas);
-  </script>
-  
-  <!-- Back to Top Button Script -->
-  <script>
-    const backToTop = document.getElementById('backToTop');
-    window.addEventListener('scroll', () => {
-      if (document.documentElement.scrollTop > 100) {
-        backToTop.style.display = 'block';
-      } else {
-        backToTop.style.display = 'none';
+      /* Animations */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
       }
-    });
-    backToTop.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-  </script>
-</body>
+
+      @keyframes slideDown {
+        from {
+          opacity: 0;
+          transform: translateY(-20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .animate-fadeIn {
+        animation: fadeIn 1s ease-out forwards;
+      }
+
+      .animate-slideDown {
+        animation: slideDown 0.8s ease-out forwards;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="bg-white">
+      <header class="absolute inset-x-0 top-0 z-50 animate-slideDown">
+        <nav class="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
+          <div class="flex lg:flex-1">
+            <a href="#" class="-m-1.5 p-1.5">
+              <span class="sr-only">Lorem Ipsum</span>
+              <img src="C:\Users\Milek\Downloads\xZFr8qdpQh--oyf9Pgl4Vw22.png" alt="" style="height: 100px; width: 100px; border: black, 2px, solid; border-radius: 30%;">
+            </a>
+          </div>
+          <!-- ... (same nav structure) ... -->
+          <div class="hidden lg:flex lg:gap-x-12">
+            <a href="#" class="text-sm/6 font-semibold text-gray-900">Downloads</a>
+            <a href="#" class="text-sm/6 font-semibold text-gray-900">Token</a>
+            <a href="#" class="text-sm/6 font-semibold text-gray-900">Contact</a>
+            <a href="#" class="text-sm/6 font-semibold text-gray-900">About us</a>
+          </div>
+          <div class="hidden lg:flex lg:flex-1 lg:justify-end">
+            <a href="#" class="text-sm/6 font-semibold text-gray-900">
+              Log in <span aria-hidden="true">&rarr;</span>
+            </a>
+          </div>
+        </nav>
+        <!-- ... (same mobile menu structure with Lorem text) ... -->
+      </header>
+
+      <div class="relative isolate px-6 pt-14 lg:px-8" style="background-color: rgba(238,241,241,255);">
+        <!-- ... (same decorative elements) ... -->
+        <div class="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56 animate-fadeIn">
+          <div class="text-center">
+            <h1 class="text-5xl font-semibold tracking-tight text-balance text-gray-900 sm:text-7xl">
+              Fignite - AI owned by community
+            </h1>
+            <p class="mt-8 text-lg font-medium text-pretty text-gray-500 sm:text-xl/8">
+              Adipisicing elit. Quos recusandae accusantium minus voluptas ratione. Natus, odit. Quasi voluptate tempora perferendis.
+            </p>
+            <div class="mt-10 flex items-center justify-center gap-x-6">
+              <a style="background-color: rgba(243,91,49,255);" href="#" class="rounded-md  px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                Get started
+              </a>
+              <a href="#" class="text-sm/6 font-semibold text-gray-900">
+                Log in <span aria-hidden="true">→</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-white">
+      <div class="mx-auto max-w-7xl py-24 sm:px-6 sm:py-32 lg:px-8">
+        <div class="relative isolate overflow-hidden bg-gray-900 px-6 pt-16 shadow-2xl sm:rounded-3xl sm:px-16 md:pt-24 lg:flex lg:gap-x-20 lg:px-24 lg:pt-0">
+          <div class="mx-auto max-w-md text-center lg:mx-0 lg:flex-auto lg:py-32 lg:text-left">
+            <h2 class="text-3xl font-semibold tracking-tight text-balance text-white sm:text-4xl">
+              Boost your productivity. Start using our app today.
+            </h2>
+            <p class="mt-6 text-lg/8 text-pretty text-gray-300">
+              Ac euismod vel sit maecenas id pellentesque eu sed consectetur. Malesuada adipiscing sagittis vel nulla.
+            </p>
+            <div class="mt-10 flex items-center justify-center gap-x-6 lg:justify-start">
+              <a href="#" style="background-color: rgba(243,91,49,255);" class="rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-xs hover:bg-gray-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
+                Get started
+              </a>
+              <a href="#" class="text-sm/6 font-semibold text-white">
+                Learn more <span aria-hidden="true">→</span>
+              </a>
+            </div>
+          </div>
+          <div class="relative mt-16 h-80 lg:mt-8">
+            <img class="absolute top-0 left-0 w-[57rem] max-w-none rounded-md bg-white/5 ring-1 ring-white/10" src="https://placehold.co/1200x800" alt="App screenshot" width="1824" height="1080" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-zinc-900 py-24 sm:py-32">
+      <div class="mx-auto max-w-7xl px-6 lg:px-8">
+        <dl class="grid grid-cols-1 gap-x-8 gap-y-16 text-center lg:grid-cols-3">
+          <div class="mx-auto flex max-w-xs flex-col gap-y-4 ">
+            <dt class="text-base/7">Consectetur adipiscing elit</dt>
+            <dd  style="color: #f35b31;" class="order-first text-3xl font-semibold tracking-tight  sm:text-5xl">
+              44 million
+            </dd>
+          </div>
+          <div class="mx-auto flex max-w-xs flex-col gap-y-4">
+            <dt class="text-base/7">Sed do eiusmod tempor</dt>
+            <dd  style="color: #f35b31;" class="order-first text-3xl font-semibold tracking-tight sm:text-5xl">
+              $119 trillion
+            </dd>
+          </div>
+          <div class="mx-auto flex max-w-xs flex-col gap-y-4">
+            <dt class="text-base/7">Incididunt ut labore</dt>
+            <dd style="color: #f35b31;" class="order-first text-3xl font-semibold tracking-tight sm:text-5xl">
+              46,000
+            </dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+
+    <div class="overflow-hidden bg-white py-24 sm:py-32">
+      <div class="mx-auto max-w-7xl px-6 lg:px-8">
+        <div class="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2">
+          <div class="lg:pt-4 lg:pr-8">
+            <div class="lg:max-w-lg">
+              <h2  style="color: rgba(243,91,49,255);" class="text-base/7 font-semibold">Deploy faster</h2>
+              <p class="mt-2 text-4xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-5xl">
+                A better workflow
+              </p>
+              <p class="mt-6 text-lg/8 text-gray-600">
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.
+              </p>
+              <dl class="mt-10 max-w-xl space-y-8 text-base/7 text-gray-600 lg:max-w-none">
+                <div class="relative pl-9">
+                  <dt class="inline font-semibold text-gray-900">
+                    <i class="fa-solid fa-upload" style="color: #f35b31;"></i>
+                    Push to deploy.
+                  </dt>
+                  <dd class="inline">
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.
+                  </dd>
+                </div>
+                <div class="relative pl-9">
+                  <dt class="inline font-semibold text-gray-900">
+                    <i class="fa-solid fa-shield" style="color: #f35b31;"></i>
+                    SSL certificates.
+                  </dt>
+                  <dd class="inline">
+                    Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo.
+                  </dd>
+                </div>
+                <div class="relative pl-9">
+                  <dt class="inline font-semibold text-gray-900">
+                    <i class="fa-solid fa-server" style="color: #f35b31;"></i>
+                    Database backups.
+                  </dt>
+                  <dd class="inline">
+                    Ac tincidunt sapien vehicula erat auctor pellentesque rhoncus. Et magna sit morbi lobortis.
+                  </dd>
+                </div>
+              </dl>
+            </div>
+          </div>
+          <img src="https://placehold.co/1200x900" alt="Product screenshot" class="w-[48rem] max-w-none rounded-xl ring-1 shadow-xl ring-gray-400/10 sm:w-[57rem] md:-ml-4 lg:-ml-0" width="2432" height="1442" />
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-zinc-900 py-24 sm:py-32">
+      <div class="mx-auto max-w-2xl px-6 lg:max-w-7xl lg:px-8">
+        <h2 class="text-center text-base/7 font-semibold text-indigo-600">Quis nostrud exercitation</h2>
+        <p style="color: #f35b31;" class="mx-auto mt-2 max-w-lg text-center text-4xl font-semibold tracking-tight text-balance sm:text-5xl">
+          Duis aute irure dolor in reprehenderit
+        </p>
+        <!-- ... (same grid structure with Lorem content) ... -->
+        <div class="mt-10 grid gap-4 sm:mt-16 lg:grid-cols-3 lg:grid-rows-2">
+          <div class="relative lg:row-span-2">
+            <div class="px-8 pt-8 pb-3 sm:px-10 sm:pt-10 sm:pb-0">
+              <p style="color: #f35b31;" class="mt-2 text-lg font-medium tracking-tight max-lg:text-center">
+                Voluptate velit
+              </p>
+              <p class="mt-2 max-w-lg text-sm/6 text-white max-lg:text-center">
+                Nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit.
+              </p>
+            </div>
+          </div>
+          <!-- ... (other grid items with similar replacements) ... -->
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-white py-24 sm:py-32">
+      <div class="mx-auto grid max-w-7xl gap-20 px-6 lg:px-8 xl:grid-cols-3">
+        <div class="max-w-xl">
+          <h2 style="color: #f35b31;" class="text-3xl font-semibold tracking-tight text-pretty sm:text-4xl">
+            Excepteur sint occaecat
+          </h2>
+          <p class="mt-6 text-lg/8 text-gray-600">
+            Cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </p>
+        </div>
+        <ul role="list" class="grid gap-x-8 gap-y-12 sm:grid-cols-2 sm:gap-y-16 xl:col-span-2">
+          <li>
+            <div class="flex items-center gap-x-6">
+              <img class="size-16 rounded-full" src="https://placehold.co/70x70" alt="" />
+              <div>
+                <h3 class="text-base/7 font-semibold tracking-tight text-black">Hugo Bowen</h3>
+                <p class="text-sm/6 font-semibold text-indigo-600">Ceo/Founder</p>
+              </div>
+            </div>
+          </li>
+          <!-- ... (other team members with similar replacements) ... -->
+        </ul>
+      </div>
+    </div>
+    <div class="relative isolate overflow-hidden bg-gray-900 py-16 sm:py-24 lg:py-32">
+        <div class="mx-auto max-w-7xl px-6 lg:px-8">
+          <div class="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-2">
+            <div class="max-w-xl lg:max-w-lg">
+              <h2 class="text-4xl font-semibold tracking-tight text-white">Subscribe to our newsletter</h2>
+              <p class="mt-4 text-lg text-gray-300">Nostrud amet eu ullamco nisi aute in ad minim nostrud adipisicing velit quis. Duis tempor incididunt dolore.</p>
+              <div class="mt-6 flex max-w-md gap-x-4">
+                <label for="email-address" class="sr-only">Email address</label>
+                <input id="email-address" name="email" type="email" autocomplete="email" required class="min-w-0 flex-auto rounded-md bg-white/5 px-3.5 py-2 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6" placeholder="Enter your email">
+                <button type="submit" class="flex-none rounded-md bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-indigo-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">Subscribe</button>
+              </div>
+            </div>
+            <dl class="grid grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-2 lg:pt-2">
+              <div class="flex flex-col items-start">
+                <div class="rounded-md bg-white/5 p-2 ring-1 ring-white/10">
+                  <i class="fa-solid fa-calendar" style="color: #f35b31;"></i>
+                </div>
+                <dt class="mt-4 text-base font-semibold text-white">Weekly articles</dt>
+                <dd class="mt-2 text-base/7 text-gray-400">Non laboris consequat cupidatat laborum magna. Eiusmod non irure cupidatat duis commodo amet.</dd>
+              </div>
+              <div class="flex flex-col items-start">
+                <div class="rounded-md bg-white/5 p-2 ring-1 ring-white/10">
+                  <i class="fa-solid fa-hand" style="color: #f35b31;"></i>
+                </div>
+                <dt class="mt-4 text-base font-semibold text-white">No spam</dt>
+                <dd class="mt-2 text-base/7 text-gray-400">Officia excepteur ullamco ut sint duis proident non adipisicing. Voluptate incididunt anim.</dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+        <div class="absolute top-0 left-1/2 -z-10 -translate-x-1/2 blur-3xl xl:-top-6" aria-hidden="true">
+          <div class="aspect-1155/678 w-[72.1875rem] bg-linear-to-tr from-[#ff80b5] to-[#9089fc] opacity-30" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
+        </div>
+      </div>
+      <footer class="w-full">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <!--Grid-->
+            <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-3 gap-y-8 md:gap-8 py-10 max-w-sm mx-auto sm:max-w-3xl lg:max-w-full">
+                <div class="col-span-full mb-10 lg:col-span-2 lg:mb-0">
+                    <a href="https://pagedone.io/"  class="flex justify-center lg:justify-start">
+                         <img src="C:\Users\Milek\Downloads\xZFr8qdpQh--oyf9Pgl4Vw22.png" alt="" style="height: 70px; width: 70px;">
+                    </a>
+                    <p class="py-8 text-sm text-gray-500 lg:max-w-xs text-center lg:text-left">Trusted in more than 100 countries & 5 million customers. Have any query ?</p>
+                    <a href="javascript:;"  class="py-2.5 px-5 h-9 block w-fit bg-indigo-600 rounded-full shadow-sm text-xs text-white mx-auto transition-all  duration-500 hover:bg-indigo-700 lg:mx-0">
+                        Contact us
+                    </a>
+                </div>
+                <!--End Col-->
+                <div class="lg:mx-auto text-left ">
+                    <h4 style="color: #f35b31;" class="text-lg font-medium mb-7">Fignite</h4>
+                    <ul class="text-sm  transition-all duration-500">
+                        <li class="mb-6"><a href="javascript:;"  class="text-gray-600 hover:text-gray-900">Home</a></li>
+                        <li class="mb-6"><a href="javascript:;"  class=" text-gray-600 hover:text-gray-900">About</a></li>
+                        <li><a href="javascript:;"  class=" text-gray-600 hover:text-gray-900">Pricing</a></li>
+                    </ul>
+                </div>
+                <!--End Col-->
+                <div class="lg:mx-auto text-left ">
+                    <h4 style="color: #f35b31;" class="text-lg font-medium mb-7">Products</h4>
+                    <ul class="text-sm  transition-all duration-500">
+                        <li class="mb-6"><a href="javascript:;"  class="text-gray-600 hover:text-gray-900">Figma UI System</a></li>
+                        <li class="mb-6"><a href="javascript:;"  class=" text-gray-600 hover:text-gray-900">Icons Assets</a></li>
+                        <li><a href="javascript:;"  class=" text-gray-600 hover:text-gray-900">Responsive Blocks</a></li>
+                    </ul>
+                </div>
+                <!--End Col-->
+                <div class="lg:mx-auto text-left ">
+                    <h4 style="color: #f35b31;" class="text-lg font-medium mb-7">Support</h4>
+                    <ul class="text-sm  transition-all duration-500">
+                        <li class="mb-6"><a href="javascript:;"  class="text-gray-600 hover:text-gray-900">Customer Support</a></li>
+                        <li class="mb-6"><a href="javascript:;"  class=" text-gray-600 hover:text-gray-900">Terms & Conditions</a></li>
+                        <li ><a href="javascript:;"  class=" text-gray-600 hover:text-gray-900">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <!--End Col-->
+                <div class="lg:mx-auto text-left ">
+                    <h4 style="color: #f35b31;" class="text-lg font-medium mb-7">Subscribe</h4>
+                    <p class="text-sm text-gray-500 leading-6 mb-7">Subscribe to get the latest news from us</p>
+                    <a href="javascript:;"  class="flex items-center justify-center gap-2 border border-indigo-600 rounded-full py-3 px-6 w-fit lg:mx-0  text-sm text-indigo-600 font-semibold transition-all duration-500 hover:bg-indigo-50">Subscribe
+                        </a>
+                </div>
+            </div>
+            <!--Grid-->
+            <div class="py-7 border-t border-gray-200">
+                <div class="flex items-center justify-center flex-col lg:justify-between lg:flex-row">
+                    <span class="text-sm text-gray-500 ">©<a href="https://pagedone.io/">Fignite</a> 2025, All rights reserved.</span>
+                    <div class="flex mt-4 space-x-4 sm:justify-center lg:mt-0 ">
+                        <a href="javascript:;"  class="w-8 h-8 rounded-full transition-all duration-500 flex justify-center items-center bg-[#33CCFF] hover:bg-gray-900">
+                          <i class="fa-brands fa-x-twitter"></i>
+                        </a>
+                        <a href="javascript:;"  class="relative w-8 h-8 rounded-full transition-all duration-500 flex justify-center items-center bg-[linear-gradient(45deg,#FEE411_6.9%,#FEDB16_10.98%,#FEC125_17.77%,#FE983D_26.42%,#FE5F5E_36.5%,#FE2181_46.24%,#9000DC_85.57%)]  hover:bg-gradient-to-b from-gray-900 to-gray-900  
+                        ">
+                        <i class="fa-brands fa-instagram"></i>
+                                
+                        </a>
+                        <a href="javascript:;"  class="relative w-8 h-8 rounded-full transition-all duration-500 flex justify-center items-center bg-[#337FFF]  hover:bg-gray-900 ">
+                          <i class="fa-brands fa-square-facebook"></i>
+                                 
+                        </a>
+                        <a href="javascript:;"  class="relative w-8 h-8 rounded-full transition-all duration-500 flex justify-center items-center bg-[#FF0000]  hover:bg-gray-900 ">
+                          <i class="fa-brands fa-youtube"></i>
+                                  
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+                                            
+  </body>
 </html>
