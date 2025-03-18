@@ -3,9 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Modern Hero Section with Animations</title>
+    <title>FigniteAI</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="shortcut icon" href="https://fignitebeta.neocities.org/favicon.ico" type="image/x-icon">
     <style>
       :root {
         --primary-color: #6366f1;
@@ -134,6 +135,54 @@
         right: -5%;
         z-index: 4;
       }
+      
+        /* Add new animations */
+  @keyframes slideInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-100px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes slideInRight {
+    from {
+      opacity: 0;
+      transform: translateX(100px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes scaleUp {
+    from {
+      opacity: 0;
+      transform: scale(0.8);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .animate-visible {
+    animation: fadeIn 1s ease-out forwards;
+  }
+
+  [data-animate="slide-left"] { animation-name: slideInLeft; }
+  [data-animate="slide-right"] { animation-name: slideInRight; }
+  [data-animate="scale-up"] { animation-name: scaleUp; }
+  [data-animate="fade-in"] { animation-name: fadeIn; }
+
+  /* Add delay classes */
+  .delay-1 { animation-delay: 0.2s; }
+  .delay-2 { animation-delay: 0.4s; }
+  .delay-3 { animation-delay: 0.6s; }
 
       @media (max-width: 1200px) {
         .image-gallery img {
@@ -419,7 +468,7 @@
           <li>
             <div class="flex items-center gap-x-6">
               <img class="size-16 rounded-full" src="https://placehold.co/70x70" alt="" />
-              <div>
+              <div data-animate="fade-in" class="delay-1">
                 <h3 class="text-base/7 font-semibold tracking-tight text-black">Hugo Bowen</h3>
                 <p class="text-sm/6 font-semibold text-indigo-600">Ceo/Founder</p>
               </div>
@@ -468,7 +517,7 @@
             <!--Grid-->
             <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-3 gap-y-8 md:gap-8 py-10 max-w-sm mx-auto sm:max-w-3xl lg:max-w-full">
                 <div class="col-span-full mb-10 lg:col-span-2 lg:mb-0">
-                    <a href="https://pagedone.io/"  class="flex justify-center lg:justify-start">
+                    <a href="https://figniteai.com"  class="flex justify-center lg:justify-start">
                          <img src="C:\Users\Milek\Downloads\xZFr8qdpQh--oyf9Pgl4Vw22.png" alt="" style="height: 70px; width: 70px;">
                     </a>
                     <p class="py-8 text-sm text-gray-500 lg:max-w-xs text-center lg:text-left">Trusted in more than 100 countries & 5 million customers. Have any query ?</p>
@@ -514,7 +563,7 @@
             <!--Grid-->
             <div class="py-7 border-t border-gray-200">
                 <div class="flex items-center justify-center flex-col lg:justify-between lg:flex-row">
-                    <span class="text-sm text-gray-500 ">©<a href="https://pagedone.io/">Fignite</a> 2025, All rights reserved.</span>
+                    <span class="text-sm text-gray-500 ">©<a href="https://figniteai.com">Fignite</a> 2025, All rights reserved.</span>
                     <div class="flex mt-4 space-x-4 sm:justify-center lg:mt-0 ">
                         <a href="javascript:;"  class="w-8 h-8 rounded-full transition-all duration-500 flex justify-center items-center bg-[#33CCFF] hover:bg-gray-900">
                           <i class="fa-brands fa-x-twitter"></i>
@@ -537,6 +586,29 @@
             </div>
         </div>
     </footer>
-                                            
+                           
+    <script>
+      // Add Intersection Observer for scroll animations
+      document.addEventListener('DOMContentLoaded', function() {
+        const observerOptions = {
+          threshold: 0.1,
+          rootMargin: '0px'
+        };
+    
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('animate-visible');
+            }
+          });
+        }, observerOptions);
+    
+        // Observe all elements with data-animate attribute
+        document.querySelectorAll('[data-animate]').forEach((element) => {
+          element.style.opacity = '0';
+          observer.observe(element);
+        });
+      });
+    </script>
   </body>
 </html>

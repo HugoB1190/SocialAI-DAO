@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fignite - Coming Soon</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+      :root {
+        --primary-color: #f35b31;
+        --text-color: #fff;
+        --bg-color: #111;
+      }
+
+      body {
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        font-family: Arial, sans-serif;
+        overflow-x: hidden;
+      }
+
+      .countdown-box {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border-radius: 15px;
+        padding: 2rem;
+        margin: 1rem;
+        min-width: 150px;
+        text-align: center;
+        transition: transform 0.3s ease;
+      }
+
+      .countdown-box:hover {
+        transform: translateY(-5px);
+      }
+
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      .animate-fadeIn {
+        animation: fadeIn 1s ease-out forwards;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="absolute inset-x-0 top-0 z-50">
+      <nav class="flex items-center justify-between p-6 lg:px-8">
+        <div class="flex lg:flex-1">
+          <a href="#" class="-m-1.5 p-1.5">
+            <img src="https://fignitebeta.neocities.org/logo.png" alt="Fignite Logo" class="h-16 w-16">
+          </a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="min-h-screen flex items-center justify-center">
+      <div class="text-center animate-fadeIn">
+        <h1 class="text-5xl md:text-7xl font-bold mb-8">
+          Something Amazing is
+          <span style="color: var(--primary-color)">Coming Soon</span>
+        </h1>
+        
+        <p class="text-xl md:text-2xl text-gray-400 mb-12 max-w-2xl mx-auto">
+          We're working hard to bring you an revolutionary AI experience. Stay tuned!
+        </p>
+
+        <!-- Countdown Timer -->
+        <div class="flex flex-wrap justify-center gap-4 mb-16">
+          <div class="countdown-box">
+            <div id="days" class="text-4xl font-bold">00</div>
+            <div class="text-gray-400">Days</div>
+          </div>
+          <div class="countdown-box">
+            <div id="hours" class="text-4xl font-bold">00</div>
+            <div class="text-gray-400">Hours</div>
+          </div>
+          <div class="countdown-box">
+            <div id="minutes" class="text-4xl font-bold">00</div>
+            <div class="text-gray-400">Minutes</div>
+          </div>
+          <div class="countdown-box">
+            <div id="seconds" class="text-4xl font-bold">00</div>
+            <div class="text-gray-400">Seconds</div>
+          </div>
+        </div>
+
+        <!-- Newsletter Form -->
+        <div class="max-w-xl mx-auto">
+          <h3 class="text-2xl mb-6">Get notified when we launch</h3>
+          <div class="flex flex-col md:flex-row gap-4">
+            <input 
+              type="email" 
+              placeholder="Enter your email" 
+              class="flex-1 px-6 py-3 rounded-lg bg-gray-800 border border-gray-700 focus:outline-none focus:border-[#f35b31]"
+            >
+            <button 
+              class="px-8 py-3 rounded-lg bg-[#f35b31] hover:bg-[#e04a28] transition-colors"
+            >
+              Notify Me
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Social Links -->
+    <footer class="absolute inset-x-0 bottom-8">
+      <div class="flex justify-center space-x-6">
+        <a href="#" class="text-gray-400 hover:text-[#f35b31] transition-colors">
+          <i class="fab fa-twitter text-2xl"></i>
+        </a>
+        <a href="#" class="text-gray-400 hover:text-[#f35b31] transition-colors">
+          <i class="fab fa-discord text-2xl"></i>
+        </a>
+        <a href="#" class="text-gray-400 hover:text-[#f35b31] transition-colors">
+          <i class="fab fa-telegram text-2xl"></i>
+        </a>
+      </div>
+    </footer>
+
+    <script>
+      // Countdown Timer
+      const launchDate = new Date('March 19, 2025 00:00:00').getTime();
+
+      const timer = setInterval(() => {
+        const now = new Date().getTime();
+        const distance = launchDate - now;
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        document.getElementById('days').innerHTML = days;
+        document.getElementById('hours').innerHTML = hours;
+        document.getElementById('minutes').innerHTML = minutes;
+        document.getElementById('seconds').innerHTML = seconds;
+
+        if (distance < 0) {
+          clearInterval(timer);
+          document.getElementById('countdown').innerHTML = "LAUNCHED!";
+        }
+      }, 1000);
+    </script>
+  </body>
+</html>
