@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Fignite</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+      :root {
+        --primary-color: #f35b31;
+        --text-color: #1f2937;
+        --bg-color: #ffffff;
+      }
+
+      .team-card {
+        background: var(--bg-color);
+        border: 1px solid #e5e7eb;
+        border-radius: 12px;
+        transition: all 0.3s ease;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+      }
+
+      .team-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 15px rgba(243, 91, 49, 0.1);
+      }
+
+      .value-card {
+        border-left: 4px solid var(--primary-color);
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50">
+    <header class="sticky top-0 bg-white shadow-sm">
+      <nav class="flex items-center justify-between p-6 lg:px-8">
+        <div class="flex lg:flex-1">
+          <a href="#" class="-m-1.5 p-1.5">
+            <img src="logo.png" alt="Fignite Logo" class="h-16 w-16">
+          </a>
+        </div>
+        <div class="hidden lg:flex lg:gap-x-12">
+          <a href="#" class="text-sm font-semibold text-gray-600 hover:text-[#f35b31]">Products</a>
+          <a href="#" class="text-sm font-semibold text-gray-600 hover:text-[#f35b31]">Technology</a>
+          <a href="#" class="text-sm font-semibold text-[#f35b31]">About</a>
+          <a href="#" class="text-sm font-semibold text-gray-600 hover:text-[#f35b31]">Careers</a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="min-h-screen py-12">
+      <div class="max-w-7xl mx-auto px-4">
+        <!-- Hero Section -->
+        <div class="text-center mb-20">
+          <h1 class="text-4xl md:text-6xl font-bold mb-6 text-gray-900">
+            Revolutionizing AI Through 
+            <span class="text-[#f35b31]">Community Innovation</span>
+          </h1>
+          <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+            At Fignite, we believe in the power of collective intelligence to build AI solutions that truly matter.
+          </p>
+        </div>
+
+        <!-- Our Story -->
+        <div class="grid md:grid-cols-2 gap-12 mb-20">
+          <div class="space-y-6">
+            <h2 class="text-3xl font-bold text-gray-900">Our Story</h2>
+            <p class="text-gray-600">
+              Founded in 2020 by AI researchers and open-source enthusiasts, Fignite emerged from a simple idea:
+              what if artificial intelligence development was driven by community needs rather than corporate agendas?
+            </p>
+            <p class="text-gray-600">
+              Starting as a small team of 5, we've grown into a global movement of 500+ contributors across 40 countries,
+              delivering cutting-edge AI solutions while maintaining our commitment to transparency and accessibility.
+            </p>
+          </div>
+          <div class="bg-gray-100 rounded-xl p-6">
+            <img src="team-photo.jpg" alt="Team photo" class="rounded-lg">
+          </div>
+        </div>
+
+        <!-- Core Values -->
+        <div class="mb-20">
+          <h2 class="text-3xl font-bold text-center mb-12 text-gray-900">Our Core Values</h2>
+          <div class="grid md:grid-cols-3 gap-8">
+            <div class="value-card p-6 bg-white space-y-4">
+              <div class="w-12 h-12 bg-[#f35b31] rounded-lg flex items-center justify-center">
+                <i class="fas fa-users-cog text-white text-xl"></i>
+              </div>
+              <h3 class="text-xl font-semibold">Community First</h3>
+              <p class="text-gray-600">
+                Every decision starts with our community. We build tools that solve real problems for real people.
+              </p>
+            </div>
+            <div class="value-card p-6 bg-white space-y-4">
+              <div class="w-12 h-12 bg-[#f35b31] rounded-lg flex items-center justify-center">
+                <i class="fas fa-lock-open text-white text-xl"></i>
+              </div>
+              <h3 class="text-xl font-semibold">Radical Transparency</h3>
+              <p class="text-gray-600">
+                Open-source by design, we share our progress, challenges, and roadmap publicly.
+              </p>
+            </div>
+            <div class="value-card p-6 bg-white space-y-4">
+              <div class="w-12 h-12 bg-[#f35b31] rounded-lg flex items-center justify-center">
+                <i class="fas fa-rocket text-white text-xl"></i>
+              </div>
+              <h3 class="text-xl font-semibold">Ethical Innovation</h3>
+              <p class="text-gray-600">
+                We develop AI responsibly, prioritizing ethical considerations in every project.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Leadership Team -->
+        <div class="mb-20">
+          <h2 class="text-3xl font-bold text-center mb-12 text-gray-900">Leadership Team</h2>
+          <div class="grid md:grid-cols-3 gap-8">
+            <div class="team-card p-6 text-center">
+              <img src="ceo.jpg" alt="CEO" class="w-32 h-32 rounded-full mx-auto mb-4">
+              <h3 class="text-xl font-bold">Alex Chen</h3>
+              <p class="text-[#f35b31] mb-2">CEO & Co-Founder</p>
+              <p class="text-gray-600 text-sm">
+                AI researcher with 15+ years experience in machine learning systems
+              </p>
+            </div>
+            <div class="team-card p-6 text-center">
+              <img src="cto.jpg" alt="CTO" class="w-32 h-32 rounded-full mx-auto mb-4">
+              <h3 class="text-xl font-bold">Maria Gonzalez</h3>
+              <p class="text-[#f35b31] mb-2">CTO & Co-Founder</p>
+              <p class="text-gray-600 text-sm">
+                Open-source advocate and distributed systems expert
+              </p>
+            </div>
+            <div class="team-card p-6 text-center">
+              <img src="cmo.jpg" alt="CMO" class="w-32 h-32 rounded-full mx-auto mb-4">
+              <h3 class="text-xl font-bold">Sarah Johnson</h3>
+              <p class="text-[#f35b31] mb-2">Chief Community Officer</p>
+              <p class="text-gray-600 text-sm">
+                Community building specialist with focus on decentralized organizations
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Milestones -->
+        <div class="bg-white p-8 rounded-xl border border-gray-200">
+          <h2 class="text-3xl font-bold text-center mb-12 text-gray-900">Our Journey</h2>
+          <div class="flex flex-col md:flex-row justify-between items-center">
+            <div class="text-center mb-8 md:mb-0">
+              <div class="text-4xl font-bold text-[#f35b31]">500K+</div>
+              <div class="text-gray-600">Active Developers</div>
+            </div>
+            <div class="text-center mb-8 md:mb-0">
+              <div class="text-4xl font-bold text-[#f35b31]">150+</div>
+              <div class="text-gray-600">Projects Supported</div>
+            </div>
+            <div class="text-center">
+              <div class="text-4xl font-bold text-[#f35b31]">40</div>
+              <div class="text-gray-600">Countries Reached</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="sticky bottom-0 bg-white border-t border-gray-200 mt-20">
+      <!-- Use the same footer code from previous examples -->
+    </footer>
+  </body>
+</html>
