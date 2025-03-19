@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fignite - Downloads</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+      :root {
+        --primary-color: #f35b31;
+        --text-color: #1f2937;
+        --bg-color: #ffffff;
+      }
+
+      .download-card {
+        background: var(--bg-color);
+        border: 1px solid #e5e7eb;
+        border-radius: 12px;
+        transition: all 0.3s ease;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+      }
+
+      .download-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 15px rgba(243, 91, 49, 0.1);
+      }
+
+      .os-selector.active {
+        border-color: var(--primary-color);
+        color: var(--primary-color);
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50">
+    <header class="absolute inset-x-0 top-0 z-50 animate-slideDown">
+        <nav class="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
+          <div class="flex lg:flex-1">
+            <a href="#" class="-m-1.5 p-1.5">
+              <span class="sr-only">Lorem Ipsum</span>
+              <img src="C:\Users\Milek\Downloads\xZFr8qdpQh--oyf9Pgl4Vw22.png" alt="" style="height: 100px; width: 100px; border: black, 2px, solid; border-radius: 30%;">
+            </a>
+          </div>
+          <!-- ... (same nav structure) ... -->
+          <div class="hidden lg:flex lg:gap-x-12">
+            <a href="#" class="text-sm/6 font-semibold text-gray-900">Downloads</a>
+            <a href="#" class="text-sm/6 font-semibold text-gray-900">Token</a>
+            <a href="#" class="text-sm/6 font-semibold text-gray-900">Contact</a>
+            <a href="#" class="text-sm/6 font-semibold text-gray-900">About us</a>
+          </div>
+          <div class="hidden lg:flex lg:flex-1 lg:justify-end">
+            <a href="#" class="text-sm/6 font-semibold text-gray-900">
+              Log in <span aria-hidden="true">&rarr;</span>
+            </a>
+          </div>
+        </nav>
+        <!-- ... (same mobile menu structure with Lorem text) ... -->
+      </header>
+
+    <main class="min-h-screen flex items-center justify-center py-32">
+      <div class="max-w-7xl mx-auto px-4">
+        <h1 class="text-4xl md:text-5xl font-bold text-center mb-12 text-gray-900">
+          Download Fignite
+        </h1>
+
+        <!-- OS Selection -->
+        <div class="flex flex-wrap justify-center gap-4 mb-12">
+          <button class="os-selector px-6 py-3 border-2 rounded-lg flex items-center gap-2 hover:border-[#f35b31]"
+            data-os="windows">
+            <i class="fab fa-windows"></i>
+            Windows
+          </button>
+          <button class="os-selector px-6 py-3 border-2 rounded-lg flex items-center gap-2 hover:border-[#f35b31]"
+            data-os="linux">
+            <i class="fab fa-linux"></i>
+            Linux
+          </button>
+          <button class="os-selector px-6 py-3 border-2 rounded-lg flex items-center gap-2 hover:border-[#f35b31]"
+            data-os="mac">
+            <i class="fab fa-apple"></i>
+            macOS
+          </button>
+        </div>
+
+        <!-- Download Cards -->
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Windows Downloads -->
+          <div class="download-card p-6" data-os="windows">
+            <div class="flex items-center gap-4 mb-4">
+              <i class="fab fa-windows text-3xl text-[#f35b31]"></i>
+              <div>
+                <h3 class="text-xl font-bold">Windows Installer</h3>
+                <p class="text-sm text-gray-600">Version 2.1.0</p>
+              </div>
+            </div>
+            <div class="space-y-4">
+              <div class="flex justify-between text-sm">
+                <span>Release Date:</span>
+                <span>2024-03-15</span>
+              </div>
+              <div class="flex justify-between text-sm">
+                <span>File Size:</span>
+                <span>158 MB</span>
+              </div>
+              <div class="flex gap-2">
+                <button class="flex-1 bg-[#f35b31] text-white py-2 rounded-lg hover:bg-[#e04a28]">
+                  <i class="fas fa-download mr-2"></i>64-bit
+                </button>
+                <button class="flex-1 bg-gray-100 text-gray-700 py-2 rounded-lg hover:bg-gray-200">
+                  32-bit
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Linux Downloads -->
+          <div class="download-card p-6" data-os="linux">
+            <div class="flex items-center gap-4 mb-4">
+              <i class="fab fa-linux text-3xl text-[#f35b31]"></i>
+              <div>
+                <h3 class="text-xl font-bold">Linux Packages</h3>
+                <p class="text-sm text-gray-600">Version 2.1.0</p>
+              </div>
+            </div>
+            <div class="space-y-4">
+              <div class="flex justify-between text-sm">
+                <span>Release Date:</span>
+                <span>2024-03-15</span>
+              </div>
+              <div class="flex flex-col gap-2">
+                <button class="w-full bg-[#f35b31] text-white py-2 rounded-lg hover:bg-[#e04a28]">
+                  .deb (Debian/Ubuntu)
+                </button>
+                <button class="w-full bg-gray-100 text-gray-700 py-2 rounded-lg hover:bg-gray-200">
+                  .rpm (Fedora)
+                </button>
+                <button class="w-full bg-gray-100 text-gray-700 py-2 rounded-lg hover:bg-gray-200">
+                  Tarball
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- macOS Downloads -->
+          <div class="download-card p-6" data-os="mac">
+            <div class="flex items-center gap-4 mb-4">
+              <i class="fab fa-apple text-3xl text-[#f35b31]"></i>
+              <div>
+                <h3 class="text-xl font-bold">macOS Package</h3>
+                <p class="text-sm text-gray-600">Version 2.1.0</p>
+              </div>
+            </div>
+            <div class="space-y-4">
+              <div class="flex justify-between text-sm">
+                <span>Release Date:</span>
+                <span>2024-03-15</span>
+              </div>
+              <div class="flex justify-between text-sm">
+                <span>File Size:</span>
+                <span>182 MB</span>
+              </div>
+              <button class="w-full bg-[#f35b31] text-white py-2 rounded-lg hover:bg-[#e04a28]">
+                <i class="fas fa-download mr-2"></i>Download
+              </button>
+            </div>
+          </div>
+
+          <!-- Source Code -->
+          <div class="download-card p-6">
+            <div class="flex items-center gap-4 mb-4">
+              <i class="fas fa-code-branch text-3xl text-[#f35b31]"></i>
+              <div>
+                <h3 class="text-xl font-bold">Source Code</h3>
+                <p class="text-sm text-gray-600">Version 2.1.0</p>
+              </div>
+            </div>
+            <div class="space-y-4">
+              <div class="flex justify-between text-sm">
+                <span>Release Date:</span>
+                <span>2024-03-15</span>
+              </div>
+              <div class="flex flex-col gap-2">
+                <button class="w-full bg-[#f35b31] text-white py-2 rounded-lg hover:bg-[#e04a28]">
+                  ZIP Archive
+                </button>
+                <button class="w-full bg-gray-100 text-gray-700 py-2 rounded-lg hover:bg-gray-200">
+                  Tarball
+                </button>
+                <a href="#" class="text-sm text-[#f35b31] hover:underline">
+                  View on GitHub <i class="fas fa-external-link-alt ml-1"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Additional Info -->
+        <div class="mt-12 max-w-3xl mx-auto">
+          <div class="bg-white p-6 rounded-lg border border-gray-200">
+            <h3 class="text-xl font-bold mb-4">Installation Guide</h3>
+            <div class="space-y-4">
+              <div class="accordion">
+                <button class="w-full text-left flex justify-between items-center py-2">
+                  <span>System Requirements</span>
+                  <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="hidden pt-2">
+                  <p class="text-sm text-gray-600">
+                    Minimum requirements for all platforms: 4GB RAM, 2GHz dual-core processor, 500MB free disk space
+                  </p>
+                </div>
+              </div>
+              <div class="accordion">
+                <button class="w-full text-left flex justify-between items-center py-2">
+                  <span>Verification Checksums</span>
+                  <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="hidden pt-2">
+                  <pre class="text-sm text-gray-600 bg-gray-50 p-4 rounded">SHA256:
+fignite-2.1.0.exe: 8a7d3...af3
+fignite-2.1.0.dmg: 45c21...e9f
+fignite-2.1.0.deb: 9b83a...7c2</pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="sticky bottom-0 bg-white border-t border-gray-200 mt-20">
+      <!-- ... (use previous footer code here) ... -->
+    </footer>
+
+    <script>
+      // OS Filtering
+      const osSelectors = document.querySelectorAll('.os-selector');
+      const downloadCards = document.querySelectorAll('.download-card');
+
+      osSelectors.forEach(selector => {
+        selector.addEventListener('click', () => {
+          // Remove active class from all buttons
+          osSelectors.forEach(btn => btn.classList.remove('active', 'border-[#f35b31]'));
+          
+          // Add active class to clicked button
+          selector.classList.add('active', 'border-[#f35b31]');
+          
+          // Get selected OS
+          const selectedOS = selector.dataset.os;
+          
+          // Filter download cards
+          downloadCards.forEach(card => {
+            if (card.dataset.os === selectedOS || !card.dataset.os) {
+              card.style.display = 'block';
+            } else {
+              card.style.display = 'none';
+            }
+          });
+        });
+      });
+
+      // Accordion functionality
+      document.querySelectorAll('.accordion button').forEach(button => {
+        button.addEventListener('click', () => {
+          const content = button.nextElementSibling;
+          const icon = button.querySelector('i');
+          
+          content.classList.toggle('hidden');
+          icon.classList.toggle('fa-chevron-down');
+          icon.classList.toggle('fa-chevron-up');
+        });
+      });
+
+      // Activate Windows by default
+      document.querySelector('[data-os="windows"]').click();
+    </script>
+  </body>
+</html>

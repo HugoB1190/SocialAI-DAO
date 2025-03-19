@@ -41,22 +41,28 @@
     </style>
   </head>
   <body class="bg-gray-50 text-gray-900">
-    <header class="sticky top-0 bg-white shadow-sm">
-      <nav class="flex items-center justify-between p-6 lg:px-8">
+    <header class="absolute inset-x-0 top-0 z-50 animate-slideDown">
+      <nav class="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
         <div class="flex lg:flex-1">
           <a href="#" class="-m-1.5 p-1.5">
-            <img src="logo.png" alt="Fignite Logo" class="h-16 w-16">
+            <span class="sr-only">Lorem Ipsum</span>
+            <img src="C:\Users\Milek\Downloads\xZFr8qdpQh--oyf9Pgl4Vw22.png" alt="" style="height: 100px; width: 100px; border: black, 2px, solid; border-radius: 30%;">
           </a>
         </div>
+        <!-- ... (same nav structure) ... -->
         <div class="hidden lg:flex lg:gap-x-12">
-          <a href="#" class="text-sm font-semibold text-gray-600 hover:text-[#f35b31]">About</a>
-          <a href="#" class="text-sm font-semibold text-gray-600 hover:text-[#f35b31]">Tokenomics</a>
-          <a href="#" class="text-sm font-semibold text-gray-600 hover:text-[#f35b31]">Roadmap</a>
+          <a href="#" class="text-sm/6 font-semibold text-gray-900">Downloads</a>
+          <a href="#" class="text-sm/6 font-semibold text-gray-900">Token</a>
+          <a href="#" class="text-sm/6 font-semibold text-gray-900">Contact</a>
+          <a href="#" class="text-sm/6 font-semibold text-gray-900">About us</a>
         </div>
         <div class="hidden lg:flex lg:flex-1 lg:justify-end">
-          <button class="bg-[#f35b31] px-6 py-2 rounded-full text-white hover:bg-[#e04a28]">Connect Wallet</button>
+          <a href="#" class="text-sm/6 font-semibold text-gray-900">
+            Log in <span aria-hidden="true">&rarr;</span>
+          </a>
         </div>
       </nav>
+      <!-- ... (same mobile menu structure with Lorem text) ... -->
     </header>
 
     <main class="min-h-screen flex items-center pt-32 pb-20">
