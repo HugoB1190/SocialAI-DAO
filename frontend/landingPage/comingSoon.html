@@ -9,30 +9,25 @@
     <style>
       :root {
         --primary-color: #f35b31;
-        --text-color: #fff;
-        --bg-color: #111;
-      }
-
-      body {
-        background-color: var(--bg-color);
-        color: var(--text-color);
-        font-family: Arial, sans-serif;
-        overflow-x: hidden;
+        --text-color: #1f2937;
+        --bg-color: #ffffff;
       }
 
       .countdown-box {
-        background: rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(10px);
-        border-radius: 15px;
+        background: #ffffff;
+        border: 1px solid #e5e7eb;
+        border-radius: 12px;
         padding: 2rem;
         margin: 1rem;
         min-width: 150px;
         text-align: center;
-        transition: transform 0.3s ease;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
       }
 
       .countdown-box:hover {
         transform: translateY(-5px);
+        box-shadow: 0 10px 15px rgba(243, 91, 49, 0.1);
       }
 
       @keyframes fadeIn {
@@ -45,63 +40,65 @@
       }
     </style>
   </head>
-  <body>
-    <header class="absolute inset-x-0 top-0 z-50">
+  <body class="bg-gray-50">
+    <header class="sticky top-0">
       <nav class="flex items-center justify-between p-6 lg:px-8">
         <div class="flex lg:flex-1">
           <a href="#" class="-m-1.5 p-1.5">
-            <img src="https://fignitebeta.neocities.org/logo.png" alt="Fignite Logo" class="h-16 w-16">
+            <span class="sr-only">Lorem Ipsum</span>
+            <img src="C:\Users\Milek\Downloads\xZFr8qdpQh--oyf9Pgl4Vw22.png" alt="" style="height: 100px; width: 100px; border: black, 2px, solid; border-radius: 30%;">
           </a>
         </div>
       </nav>
     </header>
 
-    <main class="min-h-screen flex items-center justify-center">
-      <div class="text-center animate-fadeIn">
-        <h1 class="text-5xl md:text-7xl font-bold mb-8">
-          Something Amazing is
-          <span style="color: var(--primary-color)">Coming Soon</span>
+    <main class="min-h-screen flex items-center justify-center py-32">
+      <div class="text-center animate-fadeIn px-4">
+        <h1 class="text-4xl md:text-6xl font-bold mb-8 text-gray-900">
+          Launching
+          <span class="text-[#f35b31]">Something Amazing</span>
         </h1>
         
-        <p class="text-xl md:text-2xl text-gray-400 mb-12 max-w-2xl mx-auto">
-          We're working hard to bring you an revolutionary AI experience. Stay tuned!
+        <p class="text-xl md:text-2xl text-gray-600 mb-12 max-w-2xl mx-auto">
+          We're putting the finishing touches on our revolutionary AI platform. Stay tuned!
         </p>
 
         <!-- Countdown Timer -->
         <div class="flex flex-wrap justify-center gap-4 mb-16">
           <div class="countdown-box">
-            <div id="days" class="text-4xl font-bold">00</div>
-            <div class="text-gray-400">Days</div>
+            <div id="days" class="text-4xl font-bold text-gray-900">00</div>
+            <div class="text-gray-500 mt-2">Days</div>
           </div>
           <div class="countdown-box">
-            <div id="hours" class="text-4xl font-bold">00</div>
-            <div class="text-gray-400">Hours</div>
+            <div id="hours" class="text-4xl font-bold text-gray-900">00</div>
+            <div class="text-gray-500 mt-2">Hours</div>
           </div>
           <div class="countdown-box">
-            <div id="minutes" class="text-4xl font-bold">00</div>
-            <div class="text-gray-400">Minutes</div>
+            <div id="minutes" class="text-4xl font-bold text-gray-900">00</div>
+            <div class="text-gray-500 mt-2">Minutes</div>
           </div>
           <div class="countdown-box">
-            <div id="seconds" class="text-4xl font-bold">00</div>
-            <div class="text-gray-400">Seconds</div>
+            <div id="seconds" class="text-4xl font-bold text-gray-900">00</div>
+            <div class="text-gray-500 mt-2">Seconds</div>
           </div>
         </div>
 
         <!-- Newsletter Form -->
         <div class="max-w-xl mx-auto">
-          <h3 class="text-2xl mb-6">Get notified when we launch</h3>
+          <h3 class="text-2xl mb-6 text-gray-900">Get Early Access</h3>
           <div class="flex flex-col md:flex-row gap-4">
             <input 
               type="email" 
               placeholder="Enter your email" 
-              class="flex-1 px-6 py-3 rounded-lg bg-gray-800 border border-gray-700 focus:outline-none focus:border-[#f35b31]"
+              class="flex-1 px-6 py-3 rounded-lg bg-white border border-gray-200 focus:outline-none focus:border-[#f35b31] focus:ring-1 focus:ring-[#f35b31]"
             >
             <button 
-              class="px-8 py-3 rounded-lg bg-[#f35b31] hover:bg-[#e04a28] transition-colors"
+              class="px-8 py-3 rounded-lg bg-[#f35b31] text-white hover:bg-[#e04a28] transition-colors"
             >
               Notify Me
             </button>
           </div>
+          <p class="text-sm text-gray-500 mt-4">We respect your privacy. Unsubscribe at any time.</p>
         </div>
       </div>
     </main>
@@ -123,7 +120,7 @@
 
     <script>
       // Countdown Timer
-      const launchDate = new Date('March 19, 2025 00:00:00').getTime();
+      const launchDate = new Date('January 1, 2025 00:00:00').getTime();
 
       const timer = setInterval(() => {
         const now = new Date().getTime();
@@ -134,10 +131,10 @@
         const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-        document.getElementById('days').innerHTML = days;
-        document.getElementById('hours').innerHTML = hours;
-        document.getElementById('minutes').innerHTML = minutes;
-        document.getElementById('seconds').innerHTML = seconds;
+        document.getElementById('days').innerHTML = days.toString().padStart(2, '0');
+        document.getElementById('hours').innerHTML = hours.toString().padStart(2, '0');
+        document.getElementById('minutes').innerHTML = minutes.toString().padStart(2, '0');
+        document.getElementById('seconds').innerHTML = seconds.toString().padStart(2, '0');
 
         if (distance < 0) {
           clearInterval(timer);
